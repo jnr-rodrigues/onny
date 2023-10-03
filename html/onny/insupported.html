@@ -1,61 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <title>Onny</title>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Dashboard" />
-    <meta name="author" content="dawtonico" />
-    <meta name="robots" content="noindex, nofollow" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" /> <!-- Define o conjunto de caracteres para UTF-8 -->
+    <meta name="description" content="Dashboard" /> <!-- Descrição da página -->
+    <meta name="author" content="dawtonico" /> <!-- Autor da página -->
+    <meta name="robots" content="noindex, nofollow" /> <!-- Instruções para robôs de busca -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Configuração de viewport -->
     <link
       rel="icon"
       type="image/png"
       href="https://cdn.discordapp.com/attachments/1039517691242877008/1126258378742710333/download.png"
-    />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    /> <!-- Ícone da página -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" /> <!-- Link para uma folha de estilos externa -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Poppins"
-    />
-    <link rel="stylesheet" href="/css/404.css" />
+    /> <!-- Link para fonte externa -->
+    <link rel="stylesheet" href="/css/404.css" /> <!-- Link para outra folha de estilos externa -->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
-    />
+    /> <!-- Link para fonte de ícones externa -->
     <script>
+      // Bloquear o menu de contexto ao clicar com o botão direito do mouse
       window.addEventListener("contextmenu", function (e) {
         e.preventDefault();
       });
 
+      // Bloquear a combinação de teclas Ctrl+Shift+I (para abrir o console do navegador)
       window.addEventListener("keydown", function (e) {
         if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
           e.preventDefault();
         }
       });
 
+      // Bloquear a combinação de teclas Ctrl+u (para ver o código-fonte da página)
       window.addEventListener("keydown", function (e) {
         if ((e.ctrlKey || e.metaKey) && e.key === "u") {
           e.preventDefault();
         }
       });
 
+      // Verificar a resolução do dispositivo
       verificarResolucao();
       window.addEventListener("resize", verificarResolucao);
     </script>
   </head>
 
   <body style="background-color: #313338">
-    <div class="blurry-overlay"></div>
-    <div class="text-container" style="margin-left: 60px">
+    <div class="blurry-overlay"></div> <!-- Elemento para criar um efeito de sobreposição (não especificado no código) -->
+    <div class="text-container" style="margin-left: 60px"> <!-- Container para o conteúdo da página -->
       <h2
         style="margin-top: 0px; display: inline-block"
         class="w3-xlarge w3-text-white slide-in"
       >
         Dispositivo incompatível!
       </h2>
-      <div id="descriptionOnny">
+      <div id="descriptionOnny"> <!-- Seção de descrição (conteúdo não fornecido no código) -->
         <h4
           class="w3-text-grey slide-in"
           style="margin-top: -10px; text-align: left; font-size: 15px"
@@ -74,7 +78,7 @@
       />
 
       <br />
-      <a class="discord-button discord-link" href="/">Tentar novamente!</a>
+      <a class="discord-button discord-link" href="/">Tentar novamente!</a> <!-- Link para tentar novamente -->
     </div>
   </body>
 </html>

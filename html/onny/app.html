@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <title>Onny</title>
@@ -7,16 +7,36 @@
   <meta name="description" content="" />
   <meta name="author" content="dawtonico" />
   <meta name="robots" content="noindex, nofollow" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Metadados -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!-- Meta tag para responsividade -->
+
   <link rel="icon" type="image/png"
     href="https://cdn.discordapp.com/attachments/1039517691242877008/1126258378742710333/download.png" />
+  <!-- Favicon -->
+
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <!-- Estilo CSS da biblioteca W3.css -->
+
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins" />
+  <!-- Fonte Poppins do Google Fonts -->
+
   <link rel="stylesheet" href="/css/w3.css">
+  <!-- Arquivo CSS local (depende do conteúdo deste arquivo) -->
+
   <link rel="stylesheet" href="/css/dashboard.css">
+  <!-- Arquivo CSS local (depende do conteúdo deste arquivo) -->
+
   <script src="/javascript/app.js"></script>
+  <!-- Script JavaScript local (depende do conteúdo deste arquivo) -->
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <!-- Estilo CSS da biblioteca Font Awesome -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+  <!-- Script JavaScript da biblioteca Font Awesome -->
+
   <script>
     window.addEventListener("contextmenu", function (e) {
       e.preventDefault();
@@ -33,17 +53,16 @@
         e.preventDefault();
       }
     });
-    
+
     function verificarResolucao() {
-        if (window.innerWidth <= 1450) {
-          window.location.href = "/insupported";
-        }
+      if (window.innerWidth <= 1450) {
+        window.location.href = "/insupported";
       }
+    }
 
     verificarResolucao();
     window.addEventListener("resize", verificarResolucao);
   </script>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 
 <body style="background-color: #2B2D31;">
@@ -55,38 +74,50 @@
 
   <nav class="w3-sidebar w3-collapse w3-top w3-large w3-padding" style="z-index: 3; width: 100px; font-weight: bold"
     id="mySidebar"></nav>
+  <!-- Barra de navegação -->
+
   <div id="hud" class="w3-main slide-in" style="margin-left: 140px; margin-right: 40px">
     <div class="w3-container" style="margin-top: 80px" id="showcase">
       <img id="avatarApplication"
         src="https://cdn.discordapp.com/attachments/1039517691242877008/1126266235533918228/torii-gate.png"
         style="margin-top: -22px; width: 50px; border-radius: 10px; display: inline-block; margin-right: 15px;"
         alt="Avatar">
+      <!-- Imagem do avatar -->
+
       <h2 id="usernameApplication" style="margin-top: 0px; display: inline-block;" class="w3-xxxlarge w3-text-white">
         App...
       </h2>
+      <!-- Nome de usuário -->
+
       <h4 class="w3-text-grey" style="margin-top: -15px;">Explore e personalize as interações da sua aplicação por aqui!
       </h4>
+      <!-- Descrição da página -->
+
       <hr style="width: 150px; border: 5px solid rgb(00, 00, 00)" class="w3-round" />
+      <!-- Linha horizontal estilizada -->
+
       <br />
 
       <!-- Application Interactions -->
 
       <div class="w3-container premium-item guild-item">
-        <img src="https://cdn.discordapp.com/attachments/1039517691242877008/1132056276814270464/tickets.png" style="width: 150px;" /> 
+        <img src="https://cdn.discordapp.com/attachments/1039517691242877008/1132056276814270464/tickets.png"
+          style="width: 150px;" />
+        <!-- Imagem de interação da aplicação -->
       </div>
 
       <script>
         document
-        .getElementById("closeButton")
-        .addEventListener("click", function () {
-          document.getElementById("safeBar").classList.add("blurred");
-          document.getElementById("safeBar").classList.add("hidden");
-        });
+          .getElementById("closeButton")
+          .addEventListener("click", function () {
+            document.getElementById("safeBar").classList.add("blurred");
+            document.getElementById("safeBar").classList.add("hidden");
+          });
 
-      document.body.style.marginTop = "20px";
+        document.body.style.marginTop = "20px";
       </script>
+    </div>
+  </div>
 </body>
-
-
 
 </html>
