@@ -1,10 +1,10 @@
-# Onny Bot
+# Onny
 
-Bem-vindo ao Onny Bot! Este é um bot Discord que faz várias coisas incríveis.
+Yaeh! Essa é a Onny. Esta é uma aplicação para Discord que faz várias coisas incríveis.
 
 ## Descrição
 
-O Onny Bot é um bot Discord multifuncional que foi desenvolvido para tornar os servidores Discord mais incríveis. Ele inclui uma variedade de recursos úteis para ajudar a administrar e melhorar seus servidores.
+Onny é uma aplicação para Discord multifuncional que foi desenvolvida para tornar os servidores Discord mais incríveis. Ela inclui uma variedade de recursos úteis para ajudar a administrar e melhorar seus servidores.
 
 ## Tabela de Conteúdo
 
@@ -15,40 +15,31 @@ O Onny Bot é um bot Discord multifuncional que foi desenvolvido para tornar os 
 - [Autores](#autores)
 - [Licença](#licença)
 
-## Instruções de Instalação
-
-Para usar o Onny Bot, siga estas etapas:
-
-1. Clone este repositório em sua máquina local.
-2. Configure as variáveis de ambiente no arquivo `.env`.
-3. Execute `npm install` para instalar as dependências.
-4. Execute `npm start` para iniciar o bot.
-
-## Como Usar
-
-Após a instalação e configuração, você pode adicionar o Onny Bot ao seu servidor Discord e começar a usá-lo. Use o prefixo `!` antes de qualquer comando para interagir com o bot.
-
 ## Funcionalidades
 
-O Onny Bot possui as seguintes funcionalidades:
+Onny possui as seguintes funcionalidades:
 
 - Comando `/ping`: Retorna a latência do bot.
 - Comandos de gerenciamento de servidor.
 - Integração com aplicativos parceiros.
-- ...
+- ...outras interações/funcionalidades estão em desenvolvimento!
+  Todas as funcionalidades podem ser acessadas através do [site](https://onny.discloud.app/).
 
 Para obter a lista completa de comandos e funcionalidades, consulte a documentação [aqui](docs/README.md).
 
 ## Contribuição
 
-Aceitamos contribuições! Se você deseja contribuir para o desenvolvimento do Onny Bot, siga estas etapas:
+Aceitamos contribuições! Se você deseja contribuir para o desenvolvimento do Onny, siga estas etapas:
+
+- Você pode propor alterações em nosso código através de sugestões e pedidos de pull (PRs) submetidos a este repositório.
+- Quaisquer contribuições devem estar em conformidade com a nossa [Licença de Uso](LICENSE.md).
 
 1. Faça um fork deste repositório.
 2. Crie uma branch para sua contribuição: `git checkout -b minha-contribuição`
 3. Faça as alterações desejadas e faça commit delas: `git commit -m 'Adiciona nova funcionalidade'`
 4. Envie suas alterações para o seu fork: `git push origin minha-contribuição`
 5. Abra um pull request neste repositório com uma descrição detalhada das alterações.
-   Estaremos de olho em boas alterações/sugestões em nossos códigos!
+Agradecemos pelo seu apoio e por ajudar a melhorar o Onny!
 
 ## Autores
 
@@ -68,4 +59,5 @@ Este software é protegido por direitos autorais e sua utilização está sujeit
 
 **A licença acima deve ser incluída em todas as cópias ou partes substanciais do Software.**
 Ao utilizar este software, você concorda em cumprir rigorosamente estas restrições. Agradecemos por respeitar os termos desta licença!
+
 - Você pode conferir mais algumas informações adicionais em nossa [Licença de Uso](LICENSE.md).
