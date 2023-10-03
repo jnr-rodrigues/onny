@@ -19,7 +19,7 @@ Onny possui as seguintes funcionalidades:
 Para obter a lista completa de comandos e funcionalidades, consulte a documentação [aqui](docs/README.md).
 
 ## Contribuição
-Aceitamos contribuições! Se você deseja contribuir para o desenvolvimento do Onny, siga estas etapas:
+Aceitamos contribuições! Se você deseja contribuir para o desenvolvimento da Onny, siga estas etapas:
 
 - Você pode propor alterações em nosso código através de sugestões e pedidos de pull (PRs) submetidos a este repositório.
 - Quaisquer contribuições devem estar em conformidade com a nossa [Licença de Uso](LICENSE.md).
@@ -29,7 +29,7 @@ Aceitamos contribuições! Se você deseja contribuir para o desenvolvimento do 
 3. Faça as alterações desejadas e faça commit delas: `git commit -m 'Adiciona nova funcionalidade'`
 4. Envie suas alterações para o seu fork: `git push origin minha-contribuição`
 5. Abra um pull request neste repositório com uma descrição detalhada das alterações.
-Agradecemos pelo seu apoio e por ajudar a melhorar o Onny!
+Agradecemos pelo seu apoio e por ajudar a melhorar a Onny!
 
 ## Autores
 - Autor: [dawtonico](https://github.com/dawtonico)
