@@ -1,22 +1,13 @@
-# Onny
-
-Yaeh! Essa é a Onny. Esta é uma aplicação para Discord que faz várias coisas incríveis.
-
-## Descrição
-
+# Onny ⛩️
 Onny é uma aplicação para Discord multifuncional que foi desenvolvida para tornar os servidores Discord mais incríveis. Ela inclui uma variedade de recursos úteis para ajudar a administrar e melhorar seus servidores.
 
 ## Tabela de Conteúdo
-
-- [Instruções de Instalação](#instruções-de-instalação)
-- [Como Usar](#como-usar)
 - [Funcionalidades](#funcionalidades)
 - [Contribuição](#contribuição)
 - [Autores](#autores)
 - [Licença](#licença)
 
 ## Funcionalidades
-
 Onny possui as seguintes funcionalidades:
 
 - Comando `/ping`: Retorna a latência do bot.
@@ -28,7 +19,6 @@ Onny possui as seguintes funcionalidades:
 Para obter a lista completa de comandos e funcionalidades, consulte a documentação [aqui](docs/README.md).
 
 ## Contribuição
-
 Aceitamos contribuições! Se você deseja contribuir para o desenvolvimento do Onny, siga estas etapas:
 
 - Você pode propor alterações em nosso código através de sugestões e pedidos de pull (PRs) submetidos a este repositório.
@@ -42,11 +32,9 @@ Aceitamos contribuições! Se você deseja contribuir para o desenvolvimento do 
 Agradecemos pelo seu apoio e por ajudar a melhorar o Onny!
 
 ## Autores
-
 - Autor: [dawtonico](https://github.com/dawtonico)
 
 ## Licença
-
 Copyright (c) 2023 — Onny
 Este software é protegido por direitos autorais e sua utilização está sujeita às seguintes restrições:
 
