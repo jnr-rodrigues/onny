@@ -5,7 +5,7 @@ Onny é uma aplicação para Discord multifuncional que foi desenvolvida para to
 - [Funcionalidades](#funcionalidades)
 - [Contribuição](#contribuição)
 - [Autores](#autores)
-- [Licença](#licença)
+- [Licença de Uso](#licença)
 
 ## Funcionalidades
 Onny possui as seguintes funcionalidades:
