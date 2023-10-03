@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Onny</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Dashboard" />
+    <meta name="author" content="dawtonico" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cdn.discordapp.com/attachments/1039517691242877008/1126258378742710333/download.png"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins"
+    />
+    <link rel="stylesheet" href="/css/404.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <script>
+      window.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+
+      window.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
+          e.preventDefault();
+        }
+      });
+
+      window.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === "u") {
+          e.preventDefault();
+        }
+      });
+
+      verificarResolucao();
+      window.addEventListener("resize", verificarResolucao);
+    </script>
+  </head>
+
+  <body style="background-color: #313338">
+    <div class="blurry-overlay"></div>
+    <div class="text-container" style="margin-left: 60px">
+      <h2
+        style="margin-top: 0px; display: inline-block"
+        class="w3-xlarge w3-text-white slide-in"
+      >
+        Dispositivo incompatível!
+      </h2>
+      <div id="descriptionOnny">
+        <h4
+          class="w3-text-grey slide-in"
+          style="margin-top: -10px; text-align: left; font-size: 15px"
+        >
+          O bloqueio desse dispositivo foi realizado por conta do tamanho de sua
+          resolução e/ou modelo incompatível com o site!<br />
+          <p style="margin-top: -2px; color: #ced4da; font-size: 15px">
+            Recomendamos o uso de outro dispositivo para acessar ou que aumente
+            o tamanho da sua resolução!
+          </p>
+        </h4>
+      </div>
+      <hr
+        style="width: 100px; border: 5px solid #2b2d31"
+        class="w3-round slide-in"
+      />
+
+      <br />
+      <a class="discord-button discord-link" href="/">Tentar novamente!</a>
+    </div>
+  </body>
+</html>

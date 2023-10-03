@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>Onny</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="" />
+    <meta name="author" content="dawtonico" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cdn.discordapp.com/attachments/1039517691242877008/1126258378742710333/download.png"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins"
+    />
+    <link rel="stylesheet" href="/css/w3.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      @keyframes button-hover {
+        0% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-5px);
+        }
+
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      .w3-button:hover {
+        animation: button-hover 1s infinite;
+      }
+
+      .w3-button {
+        width: 600px;
+        text-align: left;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script>
+      window.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+
+      window.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
+          e.preventDefault();
+        }
+      });
+
+      window.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === "u") {
+          e.preventDefault();
+        }
+      });
+
+      function verificarResolucao() {
+        if (window.innerWidth <= 1450) {
+          window.location.href = "/insupported";
+        }
+      }
+
+      verificarResolucao();
+      window.addEventListener("resize", verificarResolucao);
+    </script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <script src="/javascript/parceiros.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/javascript/login.js"></script>
+  </head>
+
+  <div id="hud" class="modalparceiros">
+    <div class="modalparceiros-content">
+      <div
+        class="w3-text-white"
+        style="
+          padding: 5px;
+          border-radius: 10px;
+          font-size: 13px;
+          background-color: #ff4d6d;
+        "
+      >
+        <p style="margin: 15px">
+          Logins feitos com servidores parceiros. Onny não se responsabiliza
+          pelo uso das informações. Dúvidas sobre o sistema e/ou uso das suas
+          informações devem ser direcionadas aos servidores parceiros.
+        </p>
+      </div>
+
+      <h3 class="w3-text-white" style="margin-left: 10px; margin-right: 10px">
+        Servidores parceiros!
+      </h3>
+      <p
+        id="guildsDescTitle"
+        class="w3-text-grey"
+        style="margin-top: -15px; margin-left: 10px; margin-right: 10px"
+      >
+        Acesse o dashboard de seus produtos destes servidores através da Onny.
+      </p>
+      <p
+        class="w3-text-grey"
+        style="
+          margin-top: -15px;
+          margin-left: 10px;
+          margin-right: 10px;
+          font-size: 12px;
+        "
+      >
+        Clique com ambos botões do mouse para acessar diferentes locais!
+      </p>
+      <br />
+
+      <div
+        class="w3-container w3-center premium-item"
+        style="
+          cursor: pointer;
+          animation: popIn 0.5s;
+          background-color: #2b2d31;
+          padding: 10px;
+          border-radius: 10px;
+          width: 170px;
+          display: inline-block;
+          margin-right: 20px;
+        "
+      >
+        <div
+          style="text-decoration: none; display: block"
+          onmousedown="CODE_MANAGEMENT(event)"
+        >
+          <img
+            src="https://cdn.discordapp.com/attachments/1135940633706639440/1136410503153979512/Logotipo_empresa_de_programacao_sistemas_e_tecnologia_4.png"
+            style="width: 150px; border-radius: 10px"
+          />
+          <h4 class="w3-text-white" style="text-align: center; font-size: 14px">
+            Code Management
+          </h4>
+          <p
+            class="w3-text-grey"
+            style="font-size: 11px; margin-top: -10px; text-align: center"
+          >
+            <b><i class="fab fa-discord"></i> Discord</b> (Esquerdo)<br /><b
+              ><i class="fa fa-server"></i> Dashboard</b
+            >
+            (Direito)
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="w3-container w3-center premium-item"
+        style="
+          cursor: pointer;
+          animation: popIn 0.5s;
+          background-color: #2b2d31;
+          padding: 10px;
+          border-radius: 10px;
+          width: 170px;
+          display: inline-block;
+          margin-right: 20px;
+        "
+      >
+        <div
+          style="text-decoration: none; display: block"
+          onmousedown="NEW_PARTNER(event)"
+        >
+          <img
+            src="https://cdn.discordapp.com/attachments/1039517691242877008/1139344646141653122/icone-mais_1.png"
+            style="width: 150px; border-radius: 10px"
+          />
+          <h4 class="w3-text-white" style="text-align: center; font-size: 15px">
+            Seja parceiro(a)!
+          </h4>
+          <p
+            class="w3-text-grey"
+            style="font-size: 12px; margin-top: -10px; text-align: center"
+          >
+            Acesse nosso servidor e converse com a gente!
+          </p>
+        </div>
+      </div>
+
+      <br /><br />
+
+      <button
+        class="w3-button w3-text-white"
+        style="
+          border-radius: 5px;
+          background-color: #1e1f22;
+          margin: 5px;
+          width: auto;
+        "
+        onclick="closeHUD()"
+      >
+        Fechar
+      </button>
+    </div>
+  </div>
+
+  <div id="hudStatusOnny" class="modalparceiros">
+    <div class="modalparceiros-content" style="align-items: center">
+      <div
+        class="w3-text-white"
+        style="
+          padding: 5px;
+          border-radius: 10px;
+          font-size: 13px;
+          background-color: #52b788;
+        "
+      >
+        <p style="margin: 15px">
+          Todas as interações em Onny estão atualmente online e funcionando
+          perfeitamente. Isso inclui nosso site, bot no Discord, aplicações e
+          painel de controle.
+        </p>
+      </div>
+
+      <h3 class="w3-text-white" style="margin-left: 10px; margin-right: 10px">
+        Onny
+      </h3>
+      <p
+        id="guildsDescTitle"
+        class="w3-text-grey"
+        style="margin-top: -15px; margin-left: 10px; margin-right: 10px"
+      >
+        A seguir estão informações sobre o funcionamento da Onny.
+      </p>
+      <br />
+      <p style="color: #52b788; display: inline-block"><b>LATÊNCIA! </b></p>
+      <p id="onnyLantecy" class="w3-text-white" style="display: inline-block">
+        Atualmente estou rodando com 0ms de latência.
+      </p>
+      <div class="status-bar">
+        <div class="status-fill"></div>
+      </div>
+      <canvas id="myChart" height="80"></canvas>
+      <script src="/javascript/status.js"></script>
+      <br /><br />
+
+      <button
+        class="w3-button w3-text-white"
+        style="
+          border-radius: 5px;
+          background-color: #1e1f22;
+          margin: 5px;
+          width: auto;
+        "
+        onclick="closeHUDStatusOnny()"
+      >
+        Fechar
+      </button>
+    </div>
+  </div>
+
+  <div id="hudUserProfile" class="modalUserProfile">
+    <div
+      class="modalUserProfile-content"
+      style="position: relative; align-items: center"
+    >
+      <div id="loadDiv">
+        <i
+          class="fas fa-torii-gate"
+          style="
+            color: #fff;
+            animation: popIn 1.5s;
+            font-size: 5rem;
+            margin-top: 15%;
+            margin-bottom: 15%;
+            margin-right: 45%;
+            margin-left: 45%;
+          "
+        ></i>
+      </div>
+      <div id="userProfileLocal" style="display: none">
+        <div
+          id="bannerUserProfile"
+          style="
+            background-color: #2b2d31;
+            background-size: cover;
+            background-position: center;
+            height: 150px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+          "
+        ></div>
+        <img
+          id="avatarUserProfile"
+          src="https://cdn.discordapp.com/attachments/1039517691242877008/1128074666364383394/d7b2ac2be0d74d97415c34df2e43c86f.png"
+          style="
+            width: 140px;
+            margin-top: -80px;
+            border-radius: 10px;
+            margin-left: 30px;
+            display: inline-block;
+          "
+          alt="Avatar"
+        />
+        <div style="display: inline-block">
+          <h3
+            id="usernameUserProfile"
+            class="w3-text-white"
+            style="
+              margin-left: 10px;
+              margin-right: 10px;
+              vertical-align: top;
+              margin-top: -10px;
+            "
+          ></h3>
+          <p
+            id="titleUserProfile"
+            class="w3-text-grey"
+            style="
+              font-size: 13px;
+              margin-left: 10px;
+              margin-right: 10px;
+              vertical-align: top;
+              margin-top: -13px;
+            "
+          ></p>
+        </div>
+        <div
+          class="tooltip-container"
+          style="margin-left: 10px; vertical-align: top; align-items: left"
+        >
+          <i
+            class="fa fa-question-circle"
+            style="display: inline-block; color: #ffffff"
+          ></i>
+          <span id="sobremimUserProfile" class="tooltip-text">Sobre mim</span>
+        </div>
+        <br />
+
+        <div
+          style="
+            display: inline-block;
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+            vertical-align: top;
+          "
+        >
+          <h4
+            class="w3-text-grey"
+            style="margin-left: 10px; margin-right: 10px"
+          >
+            Economia
+          </h4>
+          <div
+            class="progress-info w3-text-white"
+            style="margin-left: 10px; margin-right: 10px; margin-top: -8px"
+          >
+            <p
+              id="coinsUserProfile"
+              class="w3-text-white"
+              style="font-size: 16px; text-align: justify"
+            ></p>
+            <p
+              id="percentUserProfile"
+              class="w3-text-grey"
+              style="font-size: 12px; margin-top: -15px; text-align: center"
+            ></p>
+            <p
+              id="cashUserProfile"
+              class="w3-text-white"
+              style="font-size: 16px; text-align: justify"
+            ></p>
+          </div>
+        </div>
+
+        <div
+          style="
+            display: inline-block;
+            margin-left: 30px;
+            margin-right: 30px;
+            margin-top: 20px;
+            vertical-align: top;
+          "
+        >
+          <h4
+            class="w3-text-grey"
+            style="margin-left: 10px; margin-right: 10px"
+          >
+            Experiência
+          </h4>
+
+          <div
+            class="progress-bar"
+            style="margin-left: 10px; margin-right: 10px"
+          >
+            <div id="progressBarFill" class="progress-bar-fill"></div>
+          </div>
+
+          <div
+            class="progress-info w3-text-white"
+            style="margin-left: 10px; margin-right: 10px"
+          >
+            <span class="current-value" id="userExp"></span>
+            <span class="separator" id="separator"></span>
+            <span class="total-value" id="levelExp"></span>
+            <span class="percentage" id="percentageLevel"></span>
+            <span class="level" id="userLevel" style="margin-left: 15px"
+              >Coletando sua experiência...</span
+            >
+          </div>
+        </div>
+      </div>
+      <h3
+        id="hudUserProfileId"
+        class="w3-text-white"
+        style="font-size: 0px"
+      ></h3>
+      <button
+        class="w3-button w3-text-white"
+        style="
+          border-radius: 5px;
+          background-color: #1e1f22;
+          margin: 5px;
+          width: auto;
+        "
+        onclick="closeHUDUserProfile()"
+      >
+        Fechar
+      </button>
+    </div>
+  </div>
+
+  <body style="background-color: #2b2d31">
+    <div class="modal" id="confirmationModal">
+      <div class="modal-content">
+        <p class="w3-text-white" style="font-size: 20px">
+          Você tem certeza que deseja deslogar?
+          <br>
+          <p class="w3-text-white" style="font-size: 12px; margin-top: -15px;">Ao confirmar você será deslogado de todas as páginas em que você autorizou o acesso através da Onny.<br>Caso queira acessar novamente será necessário autorizar o acesso!</p>
+        </p>
+        <br>
+        <a
+          id="logout"
+          class="w3-buttonLogout w3-text-white w3-margin-right"
+          style="border-radius: 5px; background-color: #4070dc; margin: 5px"
+          >Deslogar</a
+        >
+        <a
+          id="cancelLogout"
+          class="discord-buttond discord-link"
+          style="
+            border-radius: 5px;
+            background-color: #1e1f22;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+          "
+          >Quero continuar logado!</a
+        >
+      </div>
+    </div>
+
+    <!-- BARRA DE AVISO SUPERIOR -->
+    <div id="safeBar" class="safe-bar">
+      <p>
+        Onny está em fase beta, seu lançamento oficial está previsto para
+        outubro. Reporte erros através de nosso Discord!
+      </p>
+      <button id="closeButton">X</button>
+    </div>
+
+    <!-- CONTEÚDO DA TELA INICIAL -->
+    <div
+      class="w3-main slide-in"
+      style="
+        margin: 0 auto;
+        max-width: fit-content;
+        z-index: 10;
+        position: relative;
+      "
+    >
+      <div
+        style="
+          background-color: #1e1f22;
+          padding-bottom: 10px;
+          border-radius: 50px;
+          margin-top: -120px;
+          padding-top: 120px;
+          margin-left: -150px;
+          margin-right: -150px;
+          margin-bottom: 30px;
+        "
+      >
+        <div style="margin-left: 150px; margin-right: 150px">
+          <!-- TITULO/DESCRIÇÃO DA PÁGINA INICAL -->
+          <div style="margin-top: 80px">
+            <img
+              id="avatar"
+              src="https://cdn.discordapp.com/attachments/1039517691242877008/1143263745188048896/image.png"
+              style="
+                margin-top: -35px;
+                width: 50px;
+                border-radius: 10px;
+                display: inline-block;
+                margin-right: 15px;
+              "
+              alt="Avatar"
+            />
+            <img
+              id="statusOnny"
+              height="20px"
+              width="60px"
+              style="margin-top: 18px; margin-left: -71px"
+              src="https://cdn.discordapp.com/attachments/1039517691242877008/1134871721959235718/carregando.png"
+            />
+            <h2
+              id="usernameInterface"
+              style="margin-top: 0px; display: inline-block; margin-left: 10px"
+              class="w3-xxxlarge w3-text-white"
+            >
+              Onny
+            </h2>
+
+            <!-- INFORMAÇÕES DO LOGIN -->
+            <p
+              id="userId"
+              style="
+                color: #1e1f22;
+                position: fixed;
+                top: 0%;
+                right: 0%;
+                z-index: 9999;
+                font-size: 0px;
+              "
+            ></p>
+            <div
+              class="dropdown"
+              style="position: relative; left: 81%; margin-top: -80px"
+            >
+              <button
+                id="avatarUser"
+                style="
+                  background-image: url('https://cdn.discordapp.com/attachments/1039517691242877008/1128074666364383394/d7b2ac2be0d74d97415c34df2e43c86f.png');
+                  width: 50px;
+                  height: 50px;
+                  padding: 10px;
+                  border-radius: 10px;
+                "
+              ></button>
+              <div class="dropdown-content">
+                <a id="dashboardButton" style="display: none" href="/usuario"
+                  >Dashboard</a
+                >
+                <a id="login" href="/auth/discord">Login</a>
+                <a id="disconnect" style="display: none">Logout</a>
+              </div>
+            </div>
+            <script>
+              function getURLParameter(name) {
+                const params = new URLSearchParams(
+                  window.location.hash.substr(1)
+                );
+                return params.get(name);
+              }
+
+              function storeTokenInLocalStorage(token, expiresInSeconds) {
+                const expirationTime =
+                  new Date().getTime() + expiresInSeconds * 1000;
+                localStorage.setItem("accessToken", token);
+                localStorage.setItem("expirationTime", expirationTime);
+              }
+
+              function isUserLoggedIn() {
+                const accessToken = localStorage.getItem("accessToken");
+                const expirationTime = localStorage.getItem("expirationTime");
+                if (accessToken && expirationTime) {
+                  return new Date().getTime() < parseInt(expirationTime);
+                }
+                return false;
+              }
+
+              function logout() {
+                localStorage.removeItem("access_token");
+                localStorage.removeItem("expirationTime");
+                window.location.replace("/");
+              }
+
+              document
+                .getElementById("logout")
+                .addEventListener("click", function () {
+                  logout();
+                });
+
+              window.onload = function () {
+                if (isUserLoggedIn()) {
+                  const accessToken = localStorage.getItem("accessToken");
+                }
+              };
+
+              const tokenType = getURLParameter("token_type");
+              const accessTokenFromURL = getURLParameter("access_token");
+              const expiresIn = getURLParameter("expires_in");
+
+              if (tokenType && accessTokenFromURL && expiresIn) {
+                storeTokenInLocalStorage(accessTokenFromURL, expiresIn);
+                window.history.pushState(
+                  {},
+                  document.title,
+                  window.location.href.split("#")[0]
+                );
+              }
+            </script>
+            <!--/-->
+
+            <div id="descriptionOnny">
+              <h4
+                id="onnyDescriptionInicialPage"
+                class="w3-text-grey"
+                style="margin-top: -10px; margin-right: 20px; text-align: left"
+              ></h4>
+            </div>
+            <script src="/javascript/index.js"></script>
+            <hr
+              style="width: 300px; border: 5px solid #2b2d31"
+              class="w3-round"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTÕES DA TELA INICIAL -->
+      <div
+        class="w3-container"
+        style="
+          display: inline-block;
+          vertical-align: top;
+          padding-left: 20px;
+          padding-right: 20px;
+          margin-top: 20px;
+        "
+        id="showcase"
+      >
+        <div
+          style="display: inline-block; margin-top: -10px; align-items: center"
+        >
+          <div>
+            <div class="button-container" style="cursor: pointer">
+              <div
+                class="drop-button-custom"
+                style="
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin-right: 10px;
+                  scale: 1.08;
+                  width: 450px;
+                "
+                onclick="onnyDashboard(event)"
+              >
+                <p style="font-size: 16px">Dashboard</p>
+                <p
+                  class="w3-text-gray"
+                  style="margin-top: 5px; font-size: 14px"
+                >
+                  Para aproveitar tudo do dashboard, é necessário fazer login
+                  com sua conta do Discord!
+                </p>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div>
+            <div class="button-container" style="cursor: pointer">
+              <div
+                class="drop-button-custom"
+                style="
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin-right: 10px;
+                  scale: 1.08;
+                  width: 450px;
+                "
+                onclick="openHUDStatusOnny()"
+              >
+                <p style="font-size: 16px">Status</p>
+                <p
+                  class="w3-text-gray"
+                  style="margin-top: 5px; font-size: 14px"
+                >
+                  Clique para acessar informações em tempo real fornecidas pela
+                  Onny.
+                </p>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div id="buttonsOptionscodemanagement">
+            <div class="button-container" style="cursor: pointer">
+              <div
+                class="drop-button-custom"
+                style="
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin-right: 10px;
+                  scale: 1.08;
+                  width: 450px;
+                "
+                onclick="openHUD()"
+              >
+                <img
+                  src="https://cdn.discordapp.com/attachments/1039517691242877008/1138651871599394867/badge_7.png"
+                  height="20px"
+                  style="margin-bottom: 5px"
+                />
+                <p style="font-size: 16px">Servidores parceiros</p>
+                <p
+                  class="w3-text-gray"
+                  style="margin-top: 5px; font-size: 14px"
+                >
+                  Clique para escolher através de qual servidor deseja conectar
+                  ao dashboard!
+                </p>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div>
+            <div class="button-container" style="cursor: pointer">
+              <div
+                class="drop-button-custom"
+                style="
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin-right: 10px;
+                  scale: 1.08;
+                  width: 450px;
+                "
+                onmousedown="interactionsOnny(event)"
+              >
+                <p style="font-size: 16px">Interações</p>
+                <p
+                  class="w3-text-gray"
+                  style="margin-top: 5px; font-size: 14px"
+                >
+                  Adicione a Onny em seu servidor!
+                  <b style="font-size: 12px">(Botão Esquerdo)</b><br />
+                  Entrar na Onny's Home!
+                  <b style="font-size: 12px">(Botão Direito)</b>
+                </p>
+                <p style="font-size: 12px; color: #adb5bd">
+                  Use os botões do mouse para executar interações diferentes!
+                </p>
+              </div>
+            </div>
+          </div>
+          <br />
+          <div>
+            <div class="button-container" style="cursor: pointer">
+              <div
+                id="loginPageBigButton"
+                class="drop-button-custom"
+                style="
+                  margin-left: 10px;
+                  margin-top: 10px;
+                  margin-right: 10px;
+                  scale: 1.08;
+                  width: 450px;
+                "
+                onmousedown="tryLogin(event)"
+              >
+                <p style="font-size: 16px">Fazer o login?</p>
+                <p
+                  class="w3-text-gray"
+                  style="margin-top: 5px; font-size: 14px"
+                >
+                  Nesta página, o login é uma escolha, mas optar por fazê-lo
+                  desbloqueia informações interessantes!
+                </p>
+              </div>
+            </div>
+          </div>
+          <br />
+        </div>
+        <script>
+          function toggleOptions() {
+            var opcoesDiv = document.getElementById("opcoes");
+            opcoesDiv.classList.toggle("show");
+          }
+        </script>
+        <script>
+          function setButtonSize() {
+            const buttons = document.getElementsByClassName("custom-button");
+            let maxSize = 0;
+
+            for (const button of buttons) {
+              const width = button.offsetWidth;
+              if (width > maxSize) {
+                maxSize = width;
+              }
+            }
+
+            for (const button of buttons) {
+              button.style.width = maxSize + "px";
+            }
+          }
+
+          window.addEventListener("load", setButtonSize);
+          window.addEventListener("resize", setButtonSize);
+        </script>
+      </div>
+
+      <!-- LEADERBOARD DA TELA INICIAL -->
+      <div
+        id="leaderboardDiv"
+        class="w3-container"
+        style="
+          display: inline-block;
+          vertical-align: top;
+          background-color: #1e1f22;
+          padding: 20px;
+          border-radius: 10px;
+          margin: 10px;
+          margin-top: 20px;
+        "
+        id="showcase"
+      >
+        <h2
+          id="usernameInterface"
+          style="margin-top: 5px"
+          class="w3-xlarge w3-text-white"
+        >
+          Mais ricos!
+        </h2>
+        <h4 class="w3-text-grey" style="margin-top: -15px">
+          Conheça os usuários mais ricos na economia de Onny.
+        </h4>
+        <br />
+        <div
+          style="
+            background-color: #2b2d31;
+            padding: 5px;
+            border-radius: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+          "
+        >
+          <p
+            id="avaliableCoins"
+            style="
+              color: #e9ecef;
+              margin-left: 5px;
+              margin-right: 5px;
+              font-size: 16px;
+              font-size: 15px;
+            "
+          ></p>
+          <p
+            id="splitIn"
+            style="
+              color: #adb5bd;
+              margin-top: -15px;
+              margin-left: 5px;
+              margin-right: 5px;
+              font-size: 16px;
+              font-size: 14px;
+            "
+          ></p>
+        </div>
+        <br />
+
+        <button
+          id="backPage"
+          class="page-buttons"
+          onclick="goToPreviousPage()"
+          style="visibility: hidden"
+        >
+          ◄
+        </button>
+        <div
+          id="leaderboardSlot"
+          class="guild-container"
+          style="margin-bottom: 10px; display: inline-block"
+        >
+          <p class="w3-text-white" style="margin: 180px">
+            <i class="fa fa-spinner fa-spin"></i> Carregando leaderboard!
+          </p>
+        </div>
+        <button
+          id="proxPage"
+          class="page-buttons"
+          onclick="goToNextPage()"
+          style="visibility: hidden"
+        >
+          ►
+        </button>
+        <br />
+        <a class="discord-button discord-link" id="toggleBlurButton"
+          >Ativar Desfoque</a
+        >
+        <script>
+          const toggleBlurButton = document.getElementById("toggleBlurButton");
+          let isBlurActive = localStorage.getItem("isBlurActive") === true;
+
+          function toggleBlurEffect() {
+            const images = document.querySelectorAll(".guild-image");
+            const container = document.querySelector(".guild-container");
+
+            if (isBlurActive) {
+              images.forEach((image) => (image.style.filter = "blur(5px)"));
+              container.classList.add("blur");
+              toggleBlurButton.textContent = "Desativar Desfoque";
+            } else {
+              images.forEach((image) => (image.style.filter = "none"));
+              container.classList.remove("blur");
+              toggleBlurButton.textContent = "Ativar Desfoque";
+            }
+          }
+
+          toggleBlurEffect();
+
+          toggleBlurButton.addEventListener("click", () => {
+            isBlurActive = !isBlurActive;
+            toggleBlurEffect();
+            localStorage.setItem("isBlurActive", isBlurActive);
+          });
+        </script>
+
+        <script>
+          const logoutButton = document.getElementById("disconnect");
+          const confirmationModal = document.getElementById("confirmationModal");
+          const confirmLogoutButton = document.getElementById("logout");
+          const cancelLogoutButton = document.getElementById("cancelLogout");
+
+          logoutButton.addEventListener("click", async () => {
+            confirmationModal.style.display = "block";
+          });
+
+          confirmLogoutButton.addEventListener("click", () => {
+            confirmationModal.style.display = "none";
+          });
+
+          cancelLogoutButton.addEventListener("click", () => {
+            confirmationModal.style.display = "none";
+          });
+        </script>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("closeButton")
+        .addEventListener("click", function () {
+          document.getElementById("safeBar").classList.add("hidden");
+          document.getElementById("mobile-warn-message").style.marginTop =
+            "20px";
+        });
+
+      document.body.style.marginTop = "20px";
+    </script>
+  </body>
+</html>

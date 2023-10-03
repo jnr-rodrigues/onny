@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>Onny</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="" />
+    <meta name="author" content="dawtonico" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cdn.discordapp.com/attachments/1039517691242877008/1126258378742710333/download.png"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins"
+    />
+    <link rel="stylesheet" href="/css/w3.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      @keyframes button-hover {
+        0% {
+          transform: translateX(0);
+        }
+
+        50% {
+          transform: translateX(20px);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .w3-button:hover {
+        animation: button-hover 1s infinite;
+      }
+
+      .w3-button {
+        width: 600px;
+        text-align: left;
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <!--<script>
+      window.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+
+      window.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
+          e.preventDefault();
+        }
+      });
+
+      window.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === "u") {
+          e.preventDefault();
+        }
+      });
+
+      function verificarResolucao() {
+        if (window.innerWidth <= 1450) {
+          window.location.href = "/insupported";
+        }
+      }
+
+      verificarResolucao();
+      window.addEventListener("resize", verificarResolucao);
+    </script>-->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <script src="/javascript/guild.js"></script>
+    <script src="/javascript/config.js"></script>
+  </head>
+
+  <div id="welcomeMessageConfigHUD" class="modal">
+    <div class="modal-content" style="align-items: center">
+      <h3 class="w3-text-white" style="margin-left: 10px; margin-right: 10px">
+        Mensagem de boas-vindas!
+      </h3>
+      <p
+        id="guildsDescTitle"
+        class="w3-text-grey"
+        style="margin-top: -15px; margin-left: 10px; margin-right: 10px"
+      >
+        Aqui estão todas as configurações disponíveis para as mensagens de
+        boas-vindas!
+      </p>
+      <br />
+      <form>
+        <div style="display: inline-block; vertical-align: top; margin: 10px">
+          <label style="color: #fff; font-size: 16px; margin: 5px" for="opcoes"
+            >Tipo de mensagem</label
+          >
+          <br />
+          <select
+            id="opcoes"
+            style="
+              margin: 5px;
+              padding: 5px;
+              border-radius: 10px;
+              background-color: #2b2d31;
+              color: #fff;
+              cursor: pointer;
+            "
+            name="opcao"
+          >
+            <option value="embed">Embed</option>
+            <option value="text">Texto</option>
+            <option value="image" disabled>Imagem (Premium)</option>
+          </select>
+        </div>
+        <div style="display: inline-block; vertical-align: top; margin: 10px">
+          <label style="color: #fff; font-size: 16px; margin: 5px" for="opcoes"
+            >Canal de boas-vindas</label
+          >
+          <br />
+          <select
+            id="opcoes"
+            style="
+              margin: 5px;
+              padding: 5px;
+              border-radius: 10px;
+              background-color: #2b2d31;
+              color: #fff;
+              cursor: pointer;
+            "
+            name="opcao"
+          >
+            <option value="false">Escolha da Onny</option>
+          </select>
+        </div>
+        <br />
+        <div style="display: inline-block; vertical-align: top; margin: 10px">
+          <label style="color: #fff; font-size: 16px; margin: 5px" for="titulo"
+            >Título da mensagem</label
+          >
+          <br />
+          <input
+            style="
+              margin: 5px;
+              padding: 5px;
+              border-radius: 10px;
+              background-color: #2b2d31;
+              color: #fff;
+              min-width: 350px;
+              max-width: 100%;
+            "
+            type=""
+            id="titulo"
+            placeholder="Informe um titulo de até 32 caracteres!"
+            name="titulo"
+            maxlength="32"
+          />
+        </div>
+        <div style="display: inline-block; vertical-align: top; margin: 10px">
+          <label style="color: #fff; font-size: 16px; margin: 5px" for="footer"
+            >Rodapé da mensagem</label
+          >
+          <br />
+          <input
+            style="
+              margin: 5px;
+              padding: 5px;
+              border-radius: 10px;
+              background-color: #2b2d31;
+              color: #fff;
+              min-width: 350px;
+              max-width: 100%;
+            "
+            type=""
+            id="footer"
+            placeholder="Informe um rodapé de até 20 caracteres!"
+            name="footer"
+            maxlength="20"
+          />
+        </div>
+        <br />
+        <div style="display: inline-block; vertical-align: top; margin: 10px">
+          <label style="color: #fff; font-size: 16px; margin: 5px" for="titulo"
+            >Descrição da mensagem</label
+          >
+          <div
+            class="helptooltip-container"
+            style="
+              margin-left: 10px;
+              vertical-align: top;
+              align-items: left;
+              display: inline-block;
+            "
+          >
+            <i
+              class="fa fa-question-circle"
+              style="display: inline-block; color: #ffffff"
+            ></i>
+            <span id="help" class="helptooltip-text">
+              A seguir estão todas as costomizações disponíveis:<br /><br />
+              {user} : Mostra o nome do usuário!<br />
+              {mention} : Menciona o usuário!<br />
+              {joinedAt} : Mostra a quantos dias a conta foi criada!
+            </span>
+          </div>
+          <br />
+          <textarea
+            style="
+              margin: 5px;
+              padding: 5px;
+              border-radius: 10px;
+              background-color: #2b2d31;
+              color: #fff;
+              min-width: 740px;
+              max-width: 100%;
+            "
+            id="descricao"
+            placeholder="Escreva uma descrição para a mensagem de até 180 caracteres!"
+            name="descricao"
+            maxlength="180"
+          ></textarea>
+        </div>
+        <br /><br />
+        <button
+          class="w3-buttonLogout w3-text-white w3-margin-right"
+          style="border-radius: 5px; background-color: #4070dc; margin: 5px"
+          type="submit"
+        >
+          Salvar
+        </button>
+        <a
+          class="discord-buttond discord-link"
+          style="
+            border-radius: 5px;
+            background-color: #1e1f22;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+          "
+          onclick="welcomeMessageCloseConfigHUD()"
+        >
+          Sair sem salvar!
+        </a>
+      </form>
+    </div>
+  </div>
+
+  <body style="background-color: #2b2d31">
+    <div class="transition-screen" id="transition-screen">
+      <div class="transition-screen-content">
+        <i
+          class="fas fa-torii-gate w3-text-white"
+          style="animation: popIn 1s infinite; margin-top: -30px"
+        ></i>
+      </div>
+    </div>
+
+    <div id="safeBar" class="safe-bar">
+      <p>
+        Onny está em fase beta, seu lançamento oficial está previsto para
+        outubro. Reporte erros através de nosso Discord!
+      </p>
+      <button id="closeButton">X</button>
+    </div>
+
+    <nav
+      class="w3-sidebar w3-collapse w3-top w3-large w3-padding"
+      style="z-index: 3; width: 100px; font-weight: bold"
+      id="mySidebar"
+    ></nav>
+    <div
+      class="w3-main slide-inx"
+      style="margin-left: 140px; margin-right: 40px; padding-bottom: 100px"
+    >
+      <div
+        class="w3-container"
+        style="margin-top: 80px; display: inline-block"
+        id="showcase"
+      >
+        <img
+          id="iconGuild"
+          src="https://cdn.discordapp.com/attachments/1039517691242877008/1126266235533918228/torii-gate.png"
+          style="
+            margin-top: -22px;
+            width: 50px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-right: 15px;
+          "
+          alt="icon"
+        />
+        <h3
+          id="nameGuild"
+          style="margin-top: 0px; display: inline-block"
+          class="w3-xxxlarge w3-text-white"
+        >
+          Server...
+        </h3>
+        <h4 class="w3-text-grey" style="margin-top: -15px">
+          Explore e personalize as interações da Onny no seu servidor por aqui!
+        </h4>
+        <hr
+          style="width: 150px; border: 5px solid rgb(00, 00, 00)"
+          class="w3-round"
+        />
+        <br /><br />
+        <div id="onnyIn"></div>
+        <br />
+        <h3 class="w3-text-white" style="margin-left: 10px; margin-right: 10px">
+          Configurações
+        </h3>
+        <p
+          id="guildsDescTitle"
+          class="w3-text-grey"
+          style="margin-top: -15px; margin-left: 10px; margin-right: 10px"
+        >
+          Em seguida estão todas as configurações possíveis para a Onny.
+        </p>
+        <br />
+        <div
+          style="background-color: #1e1f22; padding: 10px; border-radius: 10px"
+        >
+          <div
+            id="welcomeMessageActived"
+            style="
+              background-color: #00a300;
+              padding: 1px;
+              border-radius: 10px;
+              width: 100%;
+              margin-bottom: 20px;
+              text-align: center;
+              display: none;
+            "
+          >
+            <p style="color: white; font-size: 15px; margin: 5px">
+              Ativado com sucesso! Configure agora onde e qual mensagem será
+              enviada.
+            </p>
+          </div>
+
+          <div
+            id="welcomeMessageDisabled"
+            style="
+              background-color: #ff5c5c;
+              padding: 1px;
+              border-radius: 10px;
+              width: 100%;
+              margin-bottom: 20px;
+              text-align: center;
+              display: none;
+            "
+          >
+            <p style="color: white; font-size: 15px; margin: 5px">
+              Desativado com sucesso! Configurações ficarão guardadas caso
+              queira reativar novamente.
+            </p>
+          </div>
+          <div id="welcomeMessage" class="settings" style="opacity: 0.5">
+            <label class="toggle">
+              <input id="welcomeMessageChecker" type="checkbox" disabled />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div
+            style="display: inline-block; text-align: left; margin-left: 15px"
+          >
+            <h4 class="w3-text-white">Habilitar mensagem de boas-vindas!</h4>
+            <img
+              src="https://cdn.discordapp.com/attachments/1039517691242877008/1138651871599394867/badge_7.png"
+              height="20px"
+            />
+            <button
+              id="welcomeMessageConfig"
+              class="discord-button discord-link"
+              style="
+                margin-left: 15px;
+                margin-right: 15px;
+                font-size: 14px;
+                display: none;
+              "
+              onclick="welcomeMessageOpenConfigHUD()"
+            >
+              Configurar!
+            </button>
+            <p class="w3-text-grey">
+              Você já reparou naquelas saudações aconchegantes em alguns
+              servidores?<br />Que tal proporcionar essa mesma vibe para os
+              novos membros!
+            </p>
+          </div>
+        </div>
+        <br />
+        <div
+          style="background-color: #1e1f22; padding: 10px; border-radius: 10px"
+        >
+          <div id="experienceSystem" class="settings" style="opacity: 0.5">
+            <label class="toggle">
+              <input id="experienceSystemChecker" type="checkbox" disabled />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div
+            style="
+              display: inline-block;
+              text-align: left;
+              margin-left: 15px;
+              padding-bottom: 10px;
+            "
+          >
+            <h4 class="w3-text-white">
+              Permitir que membros ganhem experiência e coins.
+            </h4>
+            <img
+              src="https://cdn.discordapp.com/attachments/1039517691242877008/1138651871599394867/badge_7.png"
+              height="20px"
+            />
+            <p class="w3-text-grey">
+              Está rolando uma festa de XP, coins e níveis! Não deixe seus
+              membros perderem!<br />Isso pode ajudar no engajamento no seu
+              servidor, insentivando o envio de mensagens!
+            </p>
+            <a class="discord-button discord-link"
+              >Configurar recompensas no servidor!</a
+            >
+          </div>
+        </div>
+        <br />
+        <div
+          style="background-color: #1e1f22; padding: 10px; border-radius: 10px"
+        >
+          <div class="settings" style="opacity: 0.5">
+            <label class="toggle">
+              <input type="checkbox" disabled />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div
+            style="
+              display: inline-block;
+              text-align: left;
+              margin-left: 15px;
+              padding-bottom: 10px;
+            "
+          >
+            <h4 class="w3-text-white">Habilitar comandos de música!</h4>
+            <img
+              src="https://cdn.discordapp.com/attachments/1039517691242877008/1138651871351934996/badge_9.png"
+              height="20px"
+            />
+            <p class="w3-text-grey">
+              Páá! Páá! Páá! Que tal montar um somzão massa para a galera que
+              faz parte do rolê?<br />Isso pode ajudar no engajamento no seu
+              servidor, insentivando que usem canais de voz!
+            </p>
+          </div>
+        </div>
+        <br />
+        <div
+          style="background-color: #1e1f22; padding: 10px; border-radius: 10px"
+        >
+          <div class="settings" style="opacity: 0.5">
+            <label class="toggle">
+              <input type="checkbox" disabled />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div
+            style="
+              display: inline-block;
+              text-align: left;
+              margin-left: 15px;
+              padding-bottom: 10px;
+            "
+          >
+            <h4 class="w3-text-white">Habilitar comandos de moderação!</h4>
+            <img
+              src="https://cdn.discordapp.com/attachments/1039517691242877008/1138651871351934996/badge_9.png"
+              height="20px"
+            />
+            <p class="w3-text-grey">
+              Ow, espera um instante! Pega esse bilhetinho e maneira aí, não
+              repete essa parada.<br />Isso pode ajudar a controlar as atitudes
+              dos seus membros, insentivando que eles andem na linha!
+            </p>
+            <a class="discord-button discord-link"
+              >Configurar comandos disponíveis no servidor!</a
+            >
+          </div>
+        </div>
+        <br />
+        <div
+          style="background-color: #1e1f22; padding: 10px; border-radius: 10px"
+        >
+          <div class="settings" style="opacity: 0.5">
+            <label class="toggle">
+              <input type="checkbox" disabled />
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div
+            style="
+              display: inline-block;
+              text-align: left;
+              margin-left: 15px;
+              padding-bottom: 10px;
+            "
+          >
+            <h4 class="w3-text-white">Habilitar interações do Onny Realm!</h4>
+            <img
+              src="https://cdn.discordapp.com/attachments/1039517691242877008/1138651871351934996/badge_9.png"
+              height="20px"
+            />
+            <p class="w3-text-grey">
+              Solte os Kannushis, Shinobis, Samurais e todos os outros! Permita
+              os saques, evoluções e batalhas.<br />Isso pode ajudar no
+              engajamento no seu servidor, insentivando o envio de mensagens!
+            </p>
+            <a class="discord-button discord-link"
+              >Configurar interações especiais no servidor!</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("closeButton")
+        .addEventListener("click", function () {
+          document.getElementById("safeBar").classList.add("hidden");
+        });
+
+      document.body.style.marginTop = "20px";
+    </script>
+  </body>
+</html>

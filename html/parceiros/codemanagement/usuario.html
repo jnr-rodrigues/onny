@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>Onny</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Dashboard" />
+    <meta name="author" content="dawtonico" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cdn.discordapp.com/attachments/1039517691242877008/1126258378742710333/download.png"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins"
+    />
+    <link rel="stylesheet" href="/css/w3.css" />
+    <link rel="stylesheet" href="/css/dashboard.css" />
+    <script
+      type="module"
+      src="/html/parceiros/codemanagement/dashboard.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <script>
+      window.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+
+      window.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
+          e.preventDefault();
+        }
+      });
+
+      window.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === "u") {
+          e.preventDefault();
+        }
+      });
+
+      function verificarResolucao() {
+        if (window.innerWidth <= 1450) {
+          window.location.href = "/insupported";
+        }
+      }
+
+      verificarResolucao();
+      window.addEventListener("resize", verificarResolucao);
+    </script>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+  </head>
+
+  <body
+    id="pageTop"
+    style="
+      background-color: #2b2d31;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    "
+  >
+    <div class="transition-screen" id="transition-screen">
+      <div class="transition-screen-content">
+        <i
+          class="fas fa-torii-gate w3-text-white"
+          style="animation: inflateLoad 2s infinite; margin-top: -30px"
+        ></i>
+      </div>
+    </div>
+
+    <div id="warningBar" class="warning-bar">
+      <p>
+        Logins feitos com servidores parceiros. Onny não se responsabiliza pelo
+        uso das informações. Dúvidas sobre o sistema e/ou uso das suas
+        informações devem ser direcionadas aos servidores parceiros.
+      </p>
+      <button id="closeButton">X</button>
+    </div>
+
+    <nav
+      class="w3-sidebar w3-collapse w3-top w3-large w3-padding"
+      style="z-index: 3; width: 100px; font-weight: bold"
+      id="mySidebar"
+    >
+      <br />
+      <a
+        href="javascript:void(0)"
+        onclick="w3_close()"
+        class="w3-button w3-hide-large w3-display-topleft"
+        style="width: 100%; font-size: 22px"
+        >Fechar Menu</a
+      >
+      <div class="w3-container">
+        <h3 class="w3-padding-16 w3-text-white"></h3>
+      </div>
+    </nav>
+
+    <div
+      class="w3-main slide-inx"
+      style="margin-left: 140px; margin-right: 40px"
+    >
+      <div class="w3-container" style="margin-top: 80px" id="showcase">
+        <img
+          id="avatar"
+          src="https://cdn.discordapp.com/attachments/1039517691242877008/1126977675332948020/image.png"
+          style="
+            margin-top: -22px;
+            width: 50px;
+            border-radius: 10px;
+            display: inline-block;
+            margin-right: 15px;
+          "
+          alt="Avatar"
+        />
+        <h4
+          id="usernameInterface"
+          style="margin-top: 0px; display: inline-block"
+          class="w3-xxlarge w3-text-white"
+        >
+          Carregando...
+        </h4>
+        <h3
+          class="w3-text-grey mobile-description"
+          style="font-size: 18px; margin-top: -10px"
+        >
+          Nesta página você pode controlar algumas interações com suas
+          aplicações na Code Management.
+        </h3>
+        <hr
+          style="width: 150px; border: 5px solid rgb(00, 00, 00)"
+          class="w3-round"
+        />
+        <a id="disconnect" class="discord-button discord-link">Deslogar</a>
+        <br />
+        <div id="guildsView"></div>
+        <br />
+        <br />
+      </div>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap"
+        rel="stylesheet"
+      />
+      <br /><br />
+      <h3 class="w3-text-white" style="margin-left: 10px; margin-right: 10px">
+        Seus aplicativos
+      </h3>
+      <p
+        class="w3-text-grey"
+        style="margin-top: -15px; margin-left: 10px; margin-right: 10px"
+      >
+        Clique na aplicação em que deseja realizar alterações!
+      </p>
+      <br />
+      <p
+        id="userId"
+        style="
+          color: #2b2d31;
+          position: fixed;
+          top: 0%;
+          right: 0%;
+          z-index: 9999;
+          font-size: 0px;
+        "
+      ></p>
+      <div id="allApps" style="margin-left: 10px; margin-right: 10px">
+        <div id="loadingIcon">
+          <p class="w3-text-white">
+            <i class="fa fa-spinner fa-spin"></i> Carregando aplicações!
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="confirmationModal">
+      <div class="modal-content">
+        <p class="w3-text-white" style="font-size: 20px">
+          Você tem certeza que deseja deslogar?
+          <br>
+          <p class="w3-text-white" style="font-size: 12px; margin-top: -15px;">Ao confirmar você será deslogado de todas as páginas em que você autorizou o acesso através da Code Management.<br>Caso queira acessar essa página novamente será necessário autorizar o acesso!</p>
+        </p>
+        <br>
+        <a
+          id="logoutButton"
+          class="w3-buttonLogout w3-text-white w3-margin-right"
+          style="border-radius: 5px; background-color: #4070dc; margin: 5px"
+          >Deslogar</a
+        >
+        <a
+          id="cancelLogout"
+          class="discord-buttond discord-link"
+          style="
+            border-radius: 5px;
+            background-color: #1e1f22;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+          "
+          >Quero continuar logado!</a
+        >
+      </div>
+    </div>
+    <script>
+      const logoutButton = document.getElementById("disconnect");
+      const confirmationModal = document.getElementById("confirmationModal");
+      const confirmLogoutButton = document.getElementById("logoutButton");
+      const cancelLogoutButton = document.getElementById("cancelLogout");
+
+      logoutButton.addEventListener("click", async () => {
+        confirmationModal.style.display = "block";
+      });
+
+      confirmLogoutButton.addEventListener("click", () => {
+        confirmationModal.style.display = "none";
+      });
+
+      cancelLogoutButton.addEventListener("click", () => {
+        confirmationModal.style.display = "none";
+      });
+    </script>
+
+    <script>
+      function getURLParameter(name) {
+        const params = new URLSearchParams(window.location.hash.substr(1));
+        return params.get(name);
+      }
+
+      function storeTokenInLocalStorage(token, expiresInSeconds) {
+        const expirationTime = new Date().getTime() + expiresInSeconds * 1000;
+        localStorage.setItem("access_token_codemanagement", token);
+        localStorage.setItem("expirationTime", expirationTime);
+      }
+
+      function isUserLoggedIn() {
+        const accessToken = localStorage.getItem("access_token_codemanagement");
+        const expirationTime = localStorage.getItem("expirationTime");
+        if (accessToken && expirationTime) {
+          return new Date().getTime() < parseInt(expirationTime);
+        }
+        return false;
+      }
+
+      function logout() {
+        localStorage.removeItem("access_token_codemanagement");
+        localStorage.removeItem("expirationTime");
+        window.location.replace("/");
+      }
+
+      document
+        .getElementById("logoutButton")
+        .addEventListener("click", function () {
+          logout();
+        });
+
+      window.onload = function () {
+        if (isUserLoggedIn()) {
+          const accessToken = localStorage.getItem(
+            "access_token_codemanagement"
+          );
+        }
+      };
+
+      const tokenType = getURLParameter("token_type");
+      const accessTokenFromURL = getURLParameter("access_token_codemanagement");
+      const expiresIn = getURLParameter("expires_in");
+
+      if (tokenType && accessTokenFromURL && expiresIn) {
+        storeTokenInLocalStorage(accessTokenFromURL, expiresIn);
+        window.history.pushState(
+          {},
+          document.title,
+          window.location.href.split("#")[0]
+        );
+      }
+    </script>
+    <script>
+      document
+        .getElementById("closeButton")
+        .addEventListener("click", function () {
+          document.getElementById("warningBar").classList.add("hidden");
+          document.getElementById("mobile-warn-message").style.marginTop =
+            "20px";
+        });
+
+      document.body.style.marginTop = "20px";
+    </script>
+  </body>
+</html>

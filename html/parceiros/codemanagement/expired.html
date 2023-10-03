@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Onny</title>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Dashboard" />
+    <meta name="author" content="dawtonico" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cdn.discordapp.com/attachments/1039517691242877008/1126258378742710333/download.png"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins"
+    />
+    <link rel="stylesheet" href="/css/404.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <script>
+      window.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+
+      window.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
+          e.preventDefault();
+        }
+      });
+
+      window.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === "u") {
+          e.preventDefault();
+        }
+      });
+
+      function verificarResolucao() {
+        if (window.innerWidth <= 1450) {
+          window.location.href = "/insupported";
+        }
+      }
+
+      verificarResolucao();
+      window.addEventListener("resize", verificarResolucao);
+    </script>
+  </head>
+
+  <body style="background-color: #313338">
+    <div class="blurry-overlay"></div>
+    <div class="text-container" style="margin-left: 10%">
+      <div
+        class="w3-text-white slide-in"
+        style="
+          padding: 10px;
+          border-radius: 10px;
+          font-size: 13px;
+          background-color: #ff4d6d;
+        "
+      >
+        <h2
+          style="
+            margin-top: 0px;
+            text-align: left;
+            margin: 10px;
+            font-size: 14px;
+          "
+          class="w3-text-white slide-in"
+        >
+          Logins feitos com servidores parceiros. Onny não se responsabiliza
+          pelo uso das informações. Dúvidas sobre o sistema e/ou uso das suas
+          informações devem ser direcionadas aos servidores parceiros.
+        </h2>
+      </div>
+      <br /><br />
+      <h2
+        id="usernameInterface"
+        style="margin-top: 0px; display: inline-block"
+        class="w3-xlarge w3-text-white slide-in"
+      >
+        O seu acesso expirou!
+      </h2>
+      <div id="descriptionOnny">
+        <h4
+          id="onnyDescriptionInicialPage"
+          class="w3-text-grey slide-in"
+          style="margin-top: -15px; margin-right: 20px; text-align: left"
+        >
+          Para conseguir acessar essa página será necessário realizar o login
+          novamente!
+        </h4>
+      </div>
+      <hr
+        style="width: 100px; border: 5px solid #2b2d31"
+        class="w3-round slide-in"
+      />
+
+      <br />
+      <a
+        class="w3-button w3-text-white"
+        style="
+          border-radius: 5px;
+          background-color: #1e1f22;
+          margin: 5px;
+          margin-right: 20px;
+          width: auto;
+        "
+        href="/codemanagement/auth/discord"
+      >
+        Entrar novamente!
+      </a>
+      <a class="discord-button discord-link" href="/"
+        >Retornar para Página Inicial</a
+      >
+    </div>
+  </body>
+</html>
