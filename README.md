@@ -34,7 +34,7 @@ Aceitamos contribuições! Se você deseja contribuir para o desenvolvimento da 
 Agradecemos pelo seu apoio e por ajudar a melhorar a Onny!
 
 ## Autores
-- Autor: [dawtonico](https://github.com/dawtonico)
+- Autor: [@jnr-rodrigues](https://github.com/jnr-rodrigues)
 
 ## Licença
 Copyright (c) 2023 — Onny
