@@ -38,11 +38,9 @@ mongoose
 // Rotas e manipulação de requisições
 app.get("/auth/discord", (req, res) => {
   // Redireciona o usuário para a página de autorização do Discord
-  res.redirect(
-    `https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=https%3A%2F%2Fonny.discloud.app%2F&response_type=token&scope=identify%20guilds`
-  );
+  //res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=https%3A%2F%2Fonny.discloud.app%2F&response_type=token&scope=identify%20guilds`);
   // Outro redirecionamento para desenvolvimento local (comentado)
-  // res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=token&scope=identify%20guilds`);
+  res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=token&scope=identify%20guilds`);
 });
 
 app.get("/", async (req, res) => {
@@ -56,6 +54,11 @@ app.get("/usuario", async (req, res) => {
   res.cookie("access_token", token);
   // Responde com o arquivo HTML da página do usuário
   res.sendFile(__dirname + "/html/onny/usuario.html");
+});
+
+app.get("/pathnotes", async (req, res) => {
+  // Responde com o arquivo HTML da página das pathnotes
+  res.sendFile(__dirname + "/html/onny/pathnotes.html");
 });
 
 app.post("/app/:application", (req, res) => {

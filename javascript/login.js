@@ -35,8 +35,8 @@ if (isLoggedIn()) {
       fetch(`/api/users/${id}`)
         .then((response) => response.json())
         .then(async (data) => {
-          let icon = document.getElementById("avatarUser");
-          icon.style.backgroundImage = `url('${data[0].userInformations.avatarURL}')`;
+          document.getElementById("avatarUser").src = `${data[0].userInformations.avatarURL}`;
+          document.getElementById("NicknameUser").textContent = `${data[0].userInformations.username}`
           console.log(data[0].userInformations.avatarURL);
           document.getElementById("login").style.display = "none";
           document.getElementById("login").style.pointerEvents = "none";

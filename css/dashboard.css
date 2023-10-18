@@ -144,6 +144,19 @@ body {
     top: -5px;
 }
 
+.notes {
+  transition: transform 0.3s, opacity 0.3s, top 0.3s;
+  opacity: 0.2;
+  transform: scale(1);
+}
+
+.focused {
+  transform: scale(1.1);
+  opacity: 1;
+  top: -5px;
+  cursor: pointer;
+}
+
 .index-person-item {
   position: relative;
   display: inline-block;
@@ -173,7 +186,7 @@ body {
 
 .leaderboard-user {
   width: 170px;
-  height: 250px;
+  height: 260px;
   animation: popIn 0.5s;
   display: inline-block;
   flex-direction: column;
@@ -184,6 +197,7 @@ body {
   margin-right: 20px;
   margin-top: 20px;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .guild-item {
@@ -517,16 +531,27 @@ body {
 }
 
 .discord-button {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    cursor: pointer;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.3s;
 }
 
 .discord-link {
-    color: #4070DC;
-    text-decoration: none;
-    font-weight: bold;
+  color: #4070DC;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.discord-link-unbold {
+  color: #4070DC;
+  text-decoration: none;
+}
+
+.white-link {
+  color: #fff;
+  text-decoration: none;
 }
 
 .discord-link:hover {
@@ -1047,4 +1072,30 @@ body {
 
 .premium-item {
   margin-bottom: 20px;
+}
+
+.mac-dock {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 8px 16px;
+  color: white;
+}
+
+.dock-item {
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: transform 0.3s; /* Adiciona uma animação de zoom */
+}
+
+.dock-item:hover {
+  background-color: #555;
+  transform: scale(1.07); /* Aplica o efeito de zoom ao passar o mouse */
+}
+
+.dock-item.right {
+  margin-left: auto;
 }
