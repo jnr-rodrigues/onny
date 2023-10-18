@@ -1,3 +1,5 @@
+![image](https://github.com/jnr-rodrigues/sync-excel/assets/44007416/e14ea9b0-fd6f-4dbf-ba2d-2eddfd902096)
+
 # Onny ⛩️
 Onny é uma aplicação para Discord multifuncional que foi desenvolvida para tornar os servidores Discord mais incríveis. Ela inclui uma variedade de recursos úteis para ajudar a administrar e melhorar seus servidores.
 
@@ -32,7 +34,7 @@ Aceitamos contribuições! Se você deseja contribuir para o desenvolvimento da 
 Agradecemos pelo seu apoio e por ajudar a melhorar a Onny!
 
 ## Autores
-- Autor: [dawtonico](https://github.com/dawtonico)
+- Autor: [@jnr-rodrigues](https://github.com/jnr-rodrigues)
 
 ## Licença
 Copyright (c) 2023 — Onny
