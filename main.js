@@ -40,7 +40,9 @@ app.get("/auth/discord", (req, res) => {
   // Redireciona o usuário para a página de autorização do Discord
   //res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=https%3A%2F%2Fonny.discloud.app%2F&response_type=token&scope=identify%20guilds`);
   // Outro redirecionamento para desenvolvimento local (comentado)
-  res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=token&scope=identify%20guilds`);
+  res.redirect(
+    `https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=token&scope=identify%20guilds`
+  );
 });
 
 app.get("/", async (req, res) => {
@@ -59,6 +61,11 @@ app.get("/usuario", async (req, res) => {
 app.get("/pathnotes", async (req, res) => {
   // Responde com o arquivo HTML da página das pathnotes
   res.sendFile(__dirname + "/html/onny/pathnotes.html");
+});
+
+app.get("/leaderboard", async (req, res) => {
+  // Responde com o arquivo HTML da página da leaderboard
+  res.sendFile(__dirname + "/html/onny/leaderboard.html");
 });
 
 app.post("/app/:application", (req, res) => {
@@ -299,6 +306,100 @@ app.post("/api/onny/database/update/:type", async (req, res) => {
   }
 });
 
+const cron = require("node-cron");
+let previousLeaderboard = null;
+let leaderboardChanges = []; // Array para armazenar as mudanças
+
+// Função para fazer backup dos dados
+const performBackup = async () => {
+  try {
+    // Realize uma solicitação para a sua API de leaderboard para obter os dados
+    const response = await axios.get(
+      "http://onny.discloud.app/api/onny/leaderboard"
+    );
+
+    // Salve os dados de backup em um arquivo JSON
+    const currentLeaderboard = response.data;
+    fs.writeFileSync(
+      "leaderboardBackup.json",
+      JSON.stringify(currentLeaderboard, null, 2)
+    );
+
+    // Compare os dados atuais com os dados anteriores (se não for o primeiro backup)
+    if (previousLeaderboard) {
+      // Implemente a lógica de comparação aqui, detectando mudanças de classificação
+      const changes = [];
+
+      for (let i = 0; i < currentLeaderboard.length; i++) {
+        const currentUserData = currentLeaderboard[i];
+
+        if (currentUserData) {
+          const userId = currentUserData.id;
+
+          // Encontre o usuário na base de dados anterior
+          const previousUserData = previousLeaderboard.find(
+            (user) => user.id === userId
+          );
+
+          // Determine a posição atual
+          const currentPosition = i;
+
+          if (previousUserData) {
+            // Compare as posições para determinar o número na lista anterior
+            const previousPosition = previousLeaderboard.findIndex(
+              (user) => user.id === userId
+            );
+
+            const changeInfo = { ...currentUserData };
+            changeInfo.anteriorPosition = previousPosition;
+            changeInfo.atualPosition = currentPosition;
+            changes.push(changeInfo);
+          } else {
+            // O usuário não estava na base anterior
+            const changeInfo = { ...currentUserData };
+            changeInfo.anteriorPosition = currentPosition; // Define a posição anterior como a atual
+            changeInfo.atualPosition = currentPosition;
+            changes.push(changeInfo);
+          }
+        }
+      }
+
+      // Se houver mudanças, adicione-as ao array leaderboardChanges
+      if (changes.length > 0) {
+        leaderboardChanges.push(changes);
+        console.log("[Leaderboard] Alteração detectada!");
+      }
+    }
+
+    previousLeaderboard = currentLeaderboard;
+
+    console.log(
+      "[Leaderboard] Backup #" + Date.now() + " realizado com sucesso."
+    );
+  } catch (error) {
+    console.error("Erro ao fazer backup dos dados:", error);
+  }
+};
+
+// Agende o backup para ser executado a cada hora (à 0 minutos de cada hora)
+cron.schedule("0 * * * *", performBackup);
+
+// Execute o backup quando o aplicativo é iniciado
+performBackup().then(async () => {
+  setTimeout(() => {
+    performBackup();
+  }, 10000);
+});
+
+// Rota para exibir as mudanças no leaderboard
+app.get("/api/onny/leaderboard/generated", (req, res) => {
+  if (leaderboardChanges.length > 0) {
+    res.json(leaderboardChanges[leaderboardChanges.length - 1]);
+  } else {
+    res.json([]);
+  }
+});
+
 app.get("/expired", async (req, res) => {
   // Responde com o arquivo HTML da página de expiração
   res.sendFile(__dirname + "/html/onny/expired.html");
@@ -308,10 +409,6 @@ app.get("/insupported", async (req, res) => {
   // Responde com o arquivo HTML da página de não suportado
   res.sendFile(__dirname + "/html/onny/insupported.html");
 });
-
-// Middleware routes: Code Management
-const codemanagementRoutes = require("./routes/codemanagement");
-app.use("/codemanagement", codemanagementRoutes);
 
 // Configuração da rota para lidar com a página de erro 404
 app.get("/404", (req, res) => {

@@ -1099,3 +1099,16 @@ body {
 .dock-item.right {
   margin-left: auto;
 }
+
+#note::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 25px solid #1e1f22;
+  transform: translate(-50%, -50%);
+}
