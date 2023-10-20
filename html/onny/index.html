@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" style="overflow: hidden;">
   <head>
     <title>Onny</title>
     <meta charset="UTF-8" />
@@ -126,7 +126,7 @@
       user-select: none;
     "
   >
-    <div id="pageContent" style="margin-left: 20px; margin-right: 20px;" >
+    <div id="pageContent" style="margin-left: 20px; margin-right: 20px">
       <div class="transition-screen" id="transition-screen">
         <div class="transition-screen-content">
           <i
@@ -137,18 +137,18 @@
       </div>
 
       <div
-      style="
-        background-color: #1e1f22;
-        padding-bottom: 50px;
-        border-radius: 50px;
-        margin-top: -100px;
-        padding-top: 100px;
-        margin-left: 80px;
-        margin-right: 80px;
-        height: 300px;
-      "
+        style="
+          background-color: #1e1f22;
+          padding-bottom: 50px;
+          border-radius: 50px;
+          margin-top: -100px;
+          padding-top: 100px;
+          margin-left: 80px;
+          margin-right: 80px;
+          height: 300px;
+        "
       ></div>
-        <p
+      <p
         id="userId"
         style="
           color: #1e1f22;
@@ -168,30 +168,306 @@
           transform: translate(-25%, -25%);
         "
       >
-        <h4 class="w3-text-white" style="text-align: left;opacity: 0;
-        transform: translateY(-100%);
-        animation: slideIn 0.5s forwards;">
-          Quem está acessando?
+        <h4
+          class="w3-text-white"
+          style="
+            text-align: left;
+            opacity: 0;
+            transform: translateY(-100%);
+            animation: slideIn 0.5s forwards;
+          "
+        >
+          Onny Development
         </h4>
         <p
+          id="onnyDescriptionInicialPage"
           class="w3-text-gray"
-          style="text-align: left; font-size: 15px; margin-top: -10px;opacity: 0;
-          transform: translateY(-100%);
-          animation: slideIn 0.5s forwards;"
+          style="
+            text-align: left;
+            font-size: 15px;
+            margin-top: -10px;
+            opacity: 0;
+            transform: translateY(-100%);
+            animation: slideIn 0.5s forwards;
+          "
+        ></p>
+        <script src="/javascript/index.js"></script>
+      </div>
+      <br />
+      <div
+        style="
+          margin-left: 100px;
+          margin-top: 10px;
+          margin-bottom: 10px;
+          margin-left: 100px;
+        "
+      >
+        <p
+          id="addme_text"
+          style="
+            color: #757575;
+            text-align: left;
+            font-size: 15px;
+            opacity: 0;
+            animation: slideIn 0.5s forwards;
+          "
         >
-          Clique com ambos botões do mouse para executar funções diferentes! Acessos ficam salvos por no máximo 7 dias.
+          Junte-se a inúmeros usuários que já desfrutam da Onny!
+          <a
+            href="https://discord.com/oauth2/authorize?client_id=1013882148513661009&scope=bot&permissions=27648860222&redirect_uri=https%3A%2F%2Fonny.discloud.app%2F"
+            class="discord-button discord-link-unbold"
+            >Adicione-a ao seu servidor agora.</a
+          >
+          <br /><a
+            href="https://discord.com/invite/2Xxupbacb5"
+            class="discord-button discord-link"
+            style="margin-top: -10px; margin-left: 5px"
+            ><i
+              class="fab fa-discord"
+              style="font-size: 20px; vertical-align: middle"
+            ></i>
+            Discord da Onny</a
+          >
         </p>
       </div>
-      <br>
-      <div style="margin-left: 100px; margin-top: 10px; margin-bottom: 10px; margin-left: 100px;">
-        <p id="addme_text" style="color: #757575; text-align: left; font-size: 15px; opacity: 0; animation: slideIn 0.5s forwards;">
-          Junte-se a inúmeros usuários que já desfrutam da Onny! <a href="https://discord.com/oauth2/authorize?client_id=1013882148513661009&scope=bot&permissions=27648860222&redirect_uri=https%3A%2F%2Fonny.discloud.app%2F" class="discord-button discord-link-unbold">Adicione-a ao seu servidor agora.</a>
-          <br><a href="https://discord.com/invite/2Xxupbacb5" class="discord-button discord-link" style="margin-top: -10px; margin-left: 5px;"><i class="fab fa-discord" style="font-size: 20px; vertical-align: middle;"></i> Discord da Onny</a>
-        </p>
+      <br />
+      <button
+        style="
+          position: fixed;
+          left: 0;
+          width: 100%;
+          display: flex;
+          justify-content: right;
+          background-color: transparent;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          padding: 5px;
+          margin-left: 10px;
+          padding-right: 180px;
+        "
+      >
+        <img id="toggleRotationButton" class="dock-item right" style="border-radius: 10px; cursor: pointer;"
+          src="https://cdn.discordapp.com/attachments/1039517691242877008/1164711798356852766/radar.png?ex=65443564&is=6531c064&hm=345f08696584bc7dfdce5601a1ac64b0522fd15a9d1af3756355cfb6b8e00aaa&"
+          width="40px"
+        />
+      </button>
+      <br />
+      <div
+        class="accounts"
+        style="
+          width: 65%;
+          text-align: left;
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%);
+          padding-bottom: 300px;
+        "
+      >
+        <br />
+        <div
+          id="profileUser"
+          class="notes focused"
+          style="
+            border: 2px solid #1e1f22;
+            border-radius: 10px;
+            margin: 20px;
+            padding: 20px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            background: #1e1f22;
+          "
+          onmousedown="PRINCIPAL_LOGIN(event)"
+          onmouseover="showTooltip()"
+          onmouseout="hideTooltip()"
+        >
+          <div
+            style="
+              position: absolute;
+              top: 0;
+              left: calc(65% - 2px);
+              width: calc(35%);
+              height: calc(100% + 2px);
+              background: linear-gradient(to right, #1e1f22, transparent);
+              z-index: 1;
+            "
+          ></div>
+          <div
+            style="
+              position: absolute;
+              top: 0;
+              left: calc(65% - 2px);
+              width: calc(35%);
+              height: calc(100% + 2px);
+              background: linear-gradient(to right, #1e1f22, transparent);
+              z-index: 1;
+            "
+          ></div>
+          <div
+            id="profileBackground"
+            style="
+              position: absolute;
+              top: 0;
+              left: 65%;
+              width: 35%;
+              height: 100%;
+              background: url('') center left no-repeat;
+              background-size: cover;
+            "
+          ></div>
+          <img
+            id="profileAvatarURL"
+            src="https://cdn.discordapp.com/attachments/1039517691242877008/1165038670970097764/transferir-dinheiro.png?ex=654565d0&is=6532f0d0&hm=da93cba4379dd8ad78e5310362853955d618f470212686a009ed9ddb4d6a7928&"
+            class="rotateLoad"
+            style="
+              display: inline-block;
+              width: 60px;
+              vertical-align: middle;
+              border-radius: 5px;
+            "
+          />
+          <div
+            style="
+              display: inline-block;
+              vertical-align: middle;
+              margin-left: 10px;
+            "
+          >
+            <h4
+              id="profileUserName"
+              class="w3-text-white"
+              style="
+                text-align: left;
+                opacity: 0;
+                transform: translateY(-100%);
+                animation: slideIn 0.5s forwards;
+                font-size: 18px;
+              "
+            >Procurando usuário...</h4>
+            <p
+              id="profileUserTitle"
+              class="w3-text-gray"
+              style="
+                text-align: left;
+                opacity: 0;
+                transform: translateY(-100%);
+                animation: slideIn 0.5s forwards;
+                font-size: 14px;
+                margin-top: -10px;
+              "
+            >Clique para fazer login e ter acesso as funcionalidades!</p>
+          </div>
+          <br />
+          <div
+            class="w3-text-gray"
+            style="
+              text-align: left;
+              opacity: 0;
+              transform: translateY(-100%);
+              animation: slideIn 0.5s forwards;
+              font-size: 14px;
+              margin-top: -10px;
+              margin: 30px;
+              display: inline-block;
+              vertical-align: top;
+            "
+          >
+            <h4
+              class="w3-text-grey"
+              style="margin-left: 10px; margin-right: 10px; font-size: 14px"
+            >
+              Economia
+            </h4>
+            <p
+              id="profileUserCoins"
+              class="w3-text-white"
+              style="font-size: 14px"
+            >
+              Coins:
+            </p>
+            <p
+              id="profileUserPercent"
+              class="w3-text-gray"
+              style="
+                text-align: left;
+                opacity: 0;
+                transform: translateY(-100%);
+                animation: slideIn 0.5s forwards;
+                font-size: 13px;
+                margin-top: -15px;
+              "
+            >
+              Dono(a) de % da economia.
+            </p>
+            <p
+              id="profileUserCash"
+              class="w3-text-white"
+              style="font-size: 14px"
+            >
+              Cash:
+            </p>
+          </div>
+          <div
+            class="w3-text-gray"
+            style="
+              text-align: left;
+              opacity: 0;
+              transform: translateY(-100%);
+              animation: slideIn 0.5s forwards;
+              font-size: 14px;
+              margin-top: -10px;
+              margin: 30px;
+              display: inline-block;
+              vertical-align: top;
+            "
+          >
+            <h4
+              class="w3-text-grey"
+              style="margin-left: 10px; margin-right: 10px; font-size: 14px"
+            >
+              Experiência
+            </h4>
+            <div
+              class="progress-bar"
+              style="margin-left: 10px; margin-right: 10px"
+            >
+              <div id="progressBarFill" class="progress-bar-fill"></div>
+            </div>
+
+            <div
+              class="progress-info w3-text-white"
+              style="margin-left: 10px; margin-right: 10px"
+            >
+              <span class="current-value" id="userExp"></span>
+              <span class="separator" id="separator"></span>
+              <span class="total-value" id="levelExp"></span>
+              <span class="percentage" id="percentageLevel"></span>
+              <span
+                class="level"
+                id="userLevel"
+                style="margin-left: 15px; font-size: 14px"
+                >Procurando usuário...</span
+              >
+            </div>
+          </div>
+          <div class="tooltip-container" id="tooltip" style="display: none; text-align: left; opacity: 0; transform: translateY(-100%); animation: slideIn 0.5s forwards; font-size: 10px; vertical-align: top;">
+            <p id="helpLoged" class="w3-text-gray" style="text-align: left; opacity: 0; transform: translateY(-100%); animation: slideIn 0.5s forwards; font-size: 13px; margin-top: -15px; display: none;"><b>Dashboard</b> (Esquerdo) <b style="margin: 5px;"></b> <b>Deslogar</b> (Direito)</p>
+            <p id="helpNoLoged" class="w3-text-gray" style="text-align: left; opacity: 0; transform: translateY(-100%); animation: slideIn 0.5s forwards; font-size: 13px; margin-top: -15px; display: block;"><b>Fazer login</b> (Esquerdo/Direito)</p>
+          </div>
+        </div>
+        <br>
       </div>
-      <br>
-      <div class="mac-dock" style="bottom: 60px;">
-        <p class="w3-text-gray" style="background-color: #2b2d31; padding: 10px; margin: 10px; border-radius: 10px;">
+      <div class="mac-dock" style="bottom: 60px">
+        <p
+          class="w3-text-gray"
+          style="
+            background-color: #2b2d31;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 10px;
+          "
+        >
           Não achou o que procurava? Confira outras páginas:
         </p>
       </div>
@@ -236,7 +512,7 @@
             font-size: 15px;
             cursor: pointer;
           "
-          >
+        >
           <p style="margin: 5px; margin-top: 10px">Leaderboard!</p>
         </a>
         <a
@@ -253,91 +529,40 @@
           <p style="margin: 5px; margin-top: 10px">Status de serviço!</p>
         </a>
       </div>
-      <br>
-      <div
-        class="accounts"
-        style="
-          padding: 20px;
-          text-align: center;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background-color: #1e1f22;
-          border-radius: 10px;
-          width: 80%;
-          padding: 30px;
-          margin: 30px;
-        "
-      >
-      <p
-          class="w3-text-gray"
-          style="text-align: left; font-size: 15px; margin-top: -10px;opacity: 0;
-          transform: translateY(-100%);
-          animation: slideIn 0.5s forwards;"
-        >
-          Você será redirecionado de acordo com a conta selecionada.
-        </p>
-        <div
-          id="principalLogin"
-          class="w3-container index-person-item leaderboard-user"
-          style="display: none;"
-          onmousedown="PRINCIPAL_LOGIN(event)"
-        >
-          <img
-            id="avatarUser"
-            class="guild-image blur"
-          />
-          <h4 id="NicknameUser" class="w3-text-white guild-name"></h4>
-          <p
-            id="principalLoginActions"
-            class="w3-text-grey"
-            style="font-size: 11px; text-align: center"
-          >
-            <b> Dashboard</b> (Esquerdo)<br />
-            <b> Deslogar</b> (Direito)
-          </p>
-          <script>
-            function isUserLoggedIn() {
-              const accessToken = localStorage.getItem("accessToken");
-              const expirationTime = localStorage.getItem("expirationTime");
-              if (accessToken && expirationTime) {
-                return new Date().getTime() < parseInt(expirationTime);
-              }
-              return false;
-            }
-            function PRINCIPAL_LOGIN(event) {
-              event.preventDefault();
-              if (event.button === 0) {
-                if (isUserLoggedIn()) {
-                  window.location.href = "/usuario";
-                } else {
-                  window.location.href = "/auth/discord";
-                }
-              } else if (event.button === 2) {
-                if (isUserLoggedIn()) {
-                  confirmationModal.style.display = "block";
-                } else {
-                  window.location.href = "/auth/discord";
-                }
-              }
-            }
-          </script>
-        </div>
-      </div>
-
       <script>
-        function getURLParameter(name) {
-          const params = new URLSearchParams(window.location.hash.substr(1));
-          return params.get(name);
-        }
+        const animatedDiv = document.getElementById("profileUser");
+        const toggleRotationButton = document.getElementById(
+          "toggleRotationButton"
+        );
+        let isRotationEnabled = true;
 
-        function storeTokenInLocalStorage(token, expiresInSeconds) {
-          const expirationTime = new Date().getTime() + expiresInSeconds * 1000;
-          localStorage.setItem("accessToken", token);
-          localStorage.setItem("expirationTime", expirationTime);
-        }
+        document.addEventListener("mousemove", (e) => {
+          if (isRotationEnabled) {
+            const { clientX, clientY } = e;
+            const { left, top, width, height } =
+              animatedDiv.getBoundingClientRect();
+            const centerX = left + width / 2;
+            const centerY = top + height / 2;
+            const dx = clientX - centerX;
+            const dy = clientY - centerY;
 
+            const angleX = (dy / height) * 7;
+            const angleY = (dx / width) * 7;
+
+            animatedDiv.style.transform = `perspective(500px) rotateX(${-angleX}deg) rotateY(${angleY}deg)`;
+          }
+        });
+
+        toggleRotationButton.addEventListener("click", () => {
+          isRotationEnabled = !isRotationEnabled;
+
+          if (!isRotationEnabled) {
+            animatedDiv.style.transform =
+              "perspective(500px) rotateX(0deg) rotateY(0deg)";
+          }
+        });
+      </script>
+      <script>
         function isUserLoggedIn() {
           const accessToken = localStorage.getItem("accessToken");
           const expirationTime = localStorage.getItem("expirationTime");
@@ -346,42 +571,21 @@
           }
           return false;
         }
-
-        function logout() {
-          localStorage.removeItem("access_token");
-          localStorage.removeItem("expirationTime");
-          window.location.replace("/");
-        }
-        
-        document
-          .getElementById("logoutButton")
-          .addEventListener("click", function () {
-            logout();
-        });
-
-        window.onload = function () {
-          if (isUserLoggedIn()) {
-            const accessToken = localStorage.getItem("accessToken");
-            document.getElementById("principalLogin").style.display = "block";
-          } else {
-            document.getElementById("principalLoginActions").innerHTML =
-              "<p style='color: #FFF'>Nenhuma conta encontrada!<p><b>Fazer login</b> (Direito/Esquerdo)";
-            document.getElementById("principalLoginActions").style.verticalAlign = "middle";
-            document.getElementById("principalLogin").style.display = "block";
+        function PRINCIPAL_LOGIN(event) {
+          event.preventDefault();
+          if (event.button === 0) {
+            if (isUserLoggedIn()) {
+              window.location.href = "/usuario";
+            } else {
+              window.location.href = "/auth/discord";
+            }
+          } else if (event.button === 2) {
+            if (isUserLoggedIn()) {
+              confirmationModal.style.display = "block";
+            } else {
+              window.location.href = "/auth/discord";
+            }
           }
-        };
-
-        const tokenType = getURLParameter("token_type");
-        const accessTokenFromURL = getURLParameter("access_token");
-        const expiresIn = getURLParameter("expires_in");
-
-        if (tokenType && accessTokenFromURL && expiresIn) {
-          storeTokenInLocalStorage(accessTokenFromURL, expiresIn);
-          window.history.pushState(
-            {},
-            document.title,
-            window.location.href.split("#")[0]
-          );
         }
       </script>
       <script>

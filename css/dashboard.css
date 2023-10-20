@@ -186,7 +186,7 @@ body {
 
 .leaderboard-user {
   width: 170px;
-  height: 260px;
+  height: 270px;
   animation: popIn 0.5s;
   display: inline-block;
   flex-direction: column;
@@ -1150,4 +1150,17 @@ body {
 
 .rotate-effect:hover {
   transform: perspective(500px) rotateX(0deg) rotateY(0deg);
+}
+
+.rotateLoad {
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
