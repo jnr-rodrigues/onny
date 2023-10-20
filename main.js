@@ -40,7 +40,9 @@ app.get("/auth/discord", (req, res) => {
   // Redireciona o usuário para a página de autorização do Discord
   //res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=https%3A%2F%2Fonny.discloud.app%2F&response_type=token&scope=identify%20guilds`);
   // Outro redirecionamento para desenvolvimento local (comentado)
-  res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=token&scope=identify%20guilds`);
+  res.redirect(
+    `https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=token&scope=identify%20guilds`
+  );
 });
 
 app.get("/", async (req, res) => {
@@ -74,6 +76,11 @@ app.get("/profile/:id", async (req, res) => {
 app.get("/profile", async (req, res) => {
   // Responda com o arquivo HTML da página de perfil
   res.sendFile(__dirname + "/html/onny/profile.html");
+});
+
+app.get("/block", async (req, res) => {
+  // Responda com o arquivo HTML da página de perfil
+  res.sendFile(__dirname + "/html/onny/denied.html");
 });
 
 app.post("/app/:application", (req, res) => {

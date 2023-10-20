@@ -58,19 +58,6 @@ document.getElementById("logoutButton").addEventListener("click", function () {
   logout();
 });
 
-window.onload = function () {
-  if (isUserLoggedIn()) {
-    const accessToken = localStorage.getItem("accessToken");
-    document.getElementById("principalLogin").style.display = "block";
-  } else {
-    document.getElementById("principalLoginActions").innerHTML =
-      "<p style='color: #FFF'>Nenhuma conta encontrada!<p><b>Fazer login</b> (Direito/Esquerdo)";
-    document.getElementById("principalLoginActions").style.verticalAlign =
-      "middle";
-    document.getElementById("principalLogin").style.display = "block";
-  }
-};
-
 const tokenType = getURLParameter("token_type");
 const accessTokenFromURL = getURLParameter("access_token");
 const expiresIn = getURLParameter("expires_in");

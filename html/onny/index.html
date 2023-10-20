@@ -271,6 +271,7 @@
         "
       >
         <br />
+        <div id="terminalOpen" style="display: none;">CONSOLE OPEN</div>
         <div
           id="profileUser"
           class="notes focused"
@@ -606,6 +607,15 @@
         cancelLogoutButton.addEventListener("click", () => {
           confirmationModal.style.display = "none";
         });
+      </script>
+      <script>
+        function detectConsole() {
+          if (window.console && (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200)) {
+              window.location.href = "/block";
+          }
+        }
+
+        detectConsole();
       </script>
     </div>
   </body>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="description" content="Dashboard" />
     <meta name="author" content="dawtonico" />
+    <meta name="robots" content="noindex, nofollow" />
     <!-- Metadados -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -76,31 +77,32 @@
     </script>
   </head>
 
-  <body style="background-color: #1e1f22">
+  <body style="background-color: #313338">
     <div class="blurry-overlay"></div>
     <div class="text-container">
       <h2
-        id="usernameInterface"
         style="margin-top: 0px; display: inline-block"
-        class="w3-xlarge w3-text-white"
+        class="w3-xlarge w3-text-white slide-in"
       >
-        Oush! O que aconteceu aqui?
+        Bloqueio de segurança!
       </h2>
       <!-- Título da página -->
 
       <div id="descriptionOnny">
         <h4
-          id="onnyDescriptionInicialPage"
-          class="w3-text-grey"
-          style="margin-top: -15px; margin-right: 20px; text-align: left"
+          class="w3-text-grey slide-in"
+          style="margin-top: -15px; text-align: left; font-size: 15px"
         >
-          Essa página que você tentou acessar não foi encontrada ou é
-          inexistente!
+          Você tentou acessar o site com o console de desenvolvedor aberto ou
+          com algum malware em execução!
         </h4>
-        <!-- Descrição da página de erro 404 -->
+        <!-- Descrição da página -->
       </div>
 
-      <hr style="width: 100px; border: 5px solid #2b2d31" class="w3-round" />
+      <hr
+        style="width: 100px; border: 5px solid #2b2d31"
+        class="w3-round slide-in"
+      />
       <!-- Linha horizontal estilizada -->
 
       <br />
@@ -110,26 +112,14 @@
           border-radius: 5px;
           background-color: #1e1f22;
           margin: 5px;
+          margin-right: 20px;
           width: auto;
         "
         href="/"
       >
-        Retornar para Página Inicial
+        Entrar novamente!
       </a>
-      <!-- Botão para retornar à página inicial -->
+      <!-- Botão para retornar à página de autenticação do Discord -->
     </div>
-    <script>
-      function detectConsole() {
-        if (
-          window.console &&
-          (window.outerHeight - window.innerHeight > 200 ||
-            window.outerWidth - window.innerWidth > 200)
-        ) {
-          window.location.href = "/block";
-        }
-      }
-
-      detectConsole();
-    </script>
   </body>
 </html>

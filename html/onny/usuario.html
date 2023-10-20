@@ -489,5 +489,14 @@
         }
       </script>
     </div>
+    <script>
+      function detectConsole() {
+        if (window.console && (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200)) {
+            window.location.href = "/block";
+        }
+      }
+
+      detectConsole();
+    </script>
   </body>
 </html>
