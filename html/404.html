@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Onny</title>
     <meta charset="UTF-8" />
     <meta name="description" content="Dashboard" />
@@ -11,9 +11,9 @@
     <!-- Meta tag para responsividade -->
 
     <link
-        rel="icon"
-        type="image/png"
-        href="https://cdn.discordapp.com/attachments/1039517691242877008/1126258378742710333/download.png"
+      rel="icon"
+      type="image/png"
+      href="https://cdn.discordapp.com/attachments/1039517691242877008/1126258378742710333/download.png"
     />
     <!-- Favicon -->
 
@@ -21,8 +21,8 @@
     <!-- Estilo CSS da biblioteca W3.css -->
 
     <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins"
     />
     <!-- Fonte Poppins do Google Fonts -->
 
@@ -30,74 +30,81 @@
     <!-- Arquivo CSS local (depende do conteúdo deste arquivo) -->
 
     <link
-        rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-        crossorigin="anonymous"
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
     />
     <!-- Biblioteca de ícones FontAwesome -->
 
     <script>
-        window.addEventListener("contextmenu", function (e) {
-            e.preventDefault();
-        });
-        // Impede o menu de contexto ao clicar com o botão direito do mouse
+      window.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+      // Impede o menu de contexto ao clicar com o botão direito do mouse
 
-        window.addEventListener("keydown", function (e) {
-            if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
-                e.preventDefault();
-            }
-        });
-        // Impede a abertura das ferramentas de desenvolvedor com Ctrl+Shift+I
-
-        window.addEventListener("keydown", function (e) {
-            if ((e.ctrlKey || e.metaKey) && e.key === "u") {
-                e.preventDefault();
-            }
-        });
-        // Impede a visualização do código-fonte com Ctrl+U
-
-        function verificarResolucao() {
-            if (window.innerWidth <= 1450) {
-                window.location.href = "/insupported";
-            }
+      window.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
+          e.preventDefault();
         }
-        // Redireciona para outra página se a largura da janela for menor ou igual a 1450px
+      });
+      // Impede a abertura das ferramentas de desenvolvedor com Ctrl+Shift+I
 
-        verificarResolucao();
-        window.addEventListener("resize", verificarResolucao);
-        // Executa a função verificarResolucao() e adiciona um ouvinte de evento de redimensionamento da janela
+      window.addEventListener("keydown", function (e) {
+        if ((e.ctrlKey || e.metaKey) && e.key === "u") {
+          e.preventDefault();
+        }
+      });
+      // Impede a visualização do código-fonte com Ctrl+U
+
+      window.addEventListener("keydown", function (e) {
+        if (e.key === "F12") {
+          e.preventDefault();
+        }
+      });
+
+      function verificarResolucao() {
+        if (window.innerWidth <= 1450) {
+          window.location.href = "/insupported";
+        }
+      }
+      // Redireciona para outra página se a largura da janela for menor ou igual a 1450px
+
+      verificarResolucao();
+      window.addEventListener("resize", verificarResolucao);
+      // Executa a função verificarResolucao() e adiciona um ouvinte de evento de redimensionamento da janela
     </script>
-</head>
+  </head>
 
-<body style="background-color: #1e1f22">
-<div class="blurry-overlay"></div>
-<div class="text-container">
-    <h2
+  <body style="background-color: #1e1f22">
+    <div class="blurry-overlay"></div>
+    <div class="text-container">
+      <h2
         id="usernameInterface"
         style="margin-top: 0px; display: inline-block"
         class="w3-xlarge w3-text-white"
-    >
+      >
         Oush! O que aconteceu aqui?
-    </h2>
-    <!-- Título da página -->
+      </h2>
+      <!-- Título da página -->
 
-    <div id="descriptionOnny">
+      <div id="descriptionOnny">
         <h4
-            id="onnyDescriptionInicialPage"
-            class="w3-text-grey"
-            style="margin-top: -15px; margin-right: 20px; text-align: left"
+          id="onnyDescriptionInicialPage"
+          class="w3-text-grey"
+          style="margin-top: -15px; margin-right: 20px; text-align: left"
         >
-            Essa página que você tentou acessar não foi encontrada ou é inexistente!
+          Essa página que você tentou acessar não foi encontrada ou é
+          inexistente!
         </h4>
         <!-- Descrição da página de erro 404 -->
-    </div>
+      </div>
 
-    <hr style="width: 100px; border: 5px solid #2b2d31" class="w3-round" />
-    <!-- Linha horizontal estilizada -->
+      <hr style="width: 100px; border: 5px solid #2b2d31" class="w3-round" />
+      <!-- Linha horizontal estilizada -->
 
-    <br />
-    <a
+      <br />
+      <a
         class="w3-button w3-text-white"
         style="
           border-radius: 5px;
@@ -106,10 +113,10 @@
           width: auto;
         "
         href="/"
-    >
+      >
         Retornar para Página Inicial
-    </a>
-    <!-- Botão para retornar à página inicial -->
-</div>
-</body>
+      </a>
+      <!-- Botão para retornar à página inicial -->
+    </div>
+  </body>
 </html>

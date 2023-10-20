@@ -44,6 +44,12 @@
         }
       });
 
+      window.addEventListener("keydown", function (e) {
+        if (e.key === "F12") {
+          e.preventDefault();
+        }
+      });
+
       // Verificar a resolução do dispositivo
       verificarResolucao();
       window.addEventListener("resize", verificarResolucao);

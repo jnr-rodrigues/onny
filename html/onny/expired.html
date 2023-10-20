@@ -58,6 +58,12 @@
       });
       // Impede a visualização do código-fonte com Ctrl+U
 
+      window.addEventListener("keydown", function (e) {
+        if (e.key === "F12") {
+          e.preventDefault();
+        }
+      });
+
       function verificarResolucao() {
         if (window.innerWidth <= 1450) {
           window.location.href = "/insupported";
