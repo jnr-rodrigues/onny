@@ -47,12 +47,9 @@ if (isLoggedIn()) {
                 "url('/themes/toriiGate/banner.jpg') center / cover no-repeat";
             } else if (data[0].profile.banners.equipped == "PADRAO") {
               var element = document.getElementById("progressBarFill");
-              element.style.background = "#07f49e";
-              document.getElementById("bannerUserProfile").style.background =
-                "url('')";
-              document.getElementById(
-                "bannerUserProfile"
-              ).style.backgroundColor = "#2b2d31";
+              element.style.background = "#E94F4D";
+              document.getElementById("bannerUserProfile").style.backgroundColor =
+                "#2b2d31";
             }
 
             document.getElementById(

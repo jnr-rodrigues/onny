@@ -1,10 +1,10 @@
 function fetchData() {
-  fetch("/api/onny/leaderboard/generated")
+  fetch("https://onny.discloud.app/api/onny/leaderboard/generated")
     .then((result) => result.json())
     .then(async (jsonData) => {
       if (Array.isArray(jsonData)) {
         let totalOnnycoins = 0;
-        await fetch("/api/onny/leaderboard/generated")
+        await fetch("https://onny.discloud.app/api/onny/leaderboard/generated")
           .then((response) => response.json())
           .then((data) => {
             if (data.length > 0) {

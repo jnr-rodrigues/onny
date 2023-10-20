@@ -38,11 +38,9 @@ mongoose
 // Rotas e manipulação de requisições
 app.get("/auth/discord", (req, res) => {
   // Redireciona o usuário para a página de autorização do Discord
-  //res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=https%3A%2F%2Fonny.discloud.app%2F&response_type=token&scope=identify%20guilds`);
+  res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=https%3A%2F%2Fonny.discloud.app%2F&response_type=token&scope=identify%20guilds`);
   // Outro redirecionamento para desenvolvimento local (comentado)
-  res.redirect(
-    `https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=token&scope=identify%20guilds`
-  );
+  //res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=token&scope=identify%20guilds`);
 });
 
 app.get("/", async (req, res) => {
@@ -66,6 +64,16 @@ app.get("/pathnotes", async (req, res) => {
 app.get("/leaderboard", async (req, res) => {
   // Responde com o arquivo HTML da página da leaderboard
   res.sendFile(__dirname + "/html/onny/leaderboard.html");
+});
+
+app.get("/profile/:id", async (req, res) => {
+  // Responda com o arquivo HTML da página de perfil
+  res.sendFile(__dirname + "/html/onny/profile.html");
+});
+
+app.get("/profile", async (req, res) => {
+  // Responda com o arquivo HTML da página de perfil
+  res.sendFile(__dirname + "/html/onny/profile.html");
 });
 
 app.post("/app/:application", (req, res) => {
@@ -315,7 +323,7 @@ const performBackup = async () => {
   try {
     // Realize uma solicitação para a sua API de leaderboard para obter os dados
     const response = await axios.get(
-      "http://onny.discloud.app/api/onny/leaderboard"
+      "https://onny.discloud.app/api/onny/leaderboard"
     );
 
     // Salve os dados de backup em um arquivo JSON
@@ -384,12 +392,13 @@ const performBackup = async () => {
 // Agende o backup para ser executado a cada hora (à 0 minutos de cada hora)
 cron.schedule("0 * * * *", performBackup);
 
-// Execute o backup quando o aplicativo é iniciado
-performBackup().then(async () => {
-  setTimeout(() => {
-    performBackup();
-  }, 10000);
-});
+setTimeout(() => {
+  performBackup().then(async () => {
+    setTimeout(() => {
+      performBackup();
+    }, 10000);
+  });
+}, 30000);
 
 // Rota para exibir as mudanças no leaderboard
 app.get("/api/onny/leaderboard/generated", (req, res) => {

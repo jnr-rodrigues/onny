@@ -1112,3 +1112,42 @@ body {
   border-bottom: 25px solid #1e1f22;
   transform: translate(-50%, -50%);
 }
+
+/* Estilos da barra */
+.chat-bar {
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  min-width: 600px;
+}
+
+/* Estilos da caixa de texto */
+.chat-input {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  flex: 1;
+  min-width: 600px;
+}
+
+/* Estilos do botão */
+.chat-button {
+  background-color: #00bcd4;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.rotate-effect {
+  perspective: 500px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.rotate-effect:hover {
+  transform: perspective(500px) rotateX(0deg) rotateY(0deg);
+}
