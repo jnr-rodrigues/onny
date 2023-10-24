@@ -161,6 +161,34 @@ if (isLoggedIn()) {
         welcomeMessageChecker.checked = false;
       }
 
+      function carregarCanais(serverID) {
+        fetch(`/api/onny/guild/${serverID}`)
+          .then((response) => response.json())
+          .then((data) => {
+            const canais = data.channels;
+            const select = document.getElementById("newMember.channel");
+
+            // Limpe as opções existentes, exceto a opção "Escolha da Onny"
+            select
+              .querySelectorAll('option:not([value="false"])')
+              .forEach((option) => {
+                option.remove();
+              });
+
+            // Adicione as opções dos canais com o valor sendo o ID do canal e tipo igual a 0
+            canais.forEach((canal) => {
+              if (canal.type === 0) {
+                const optionText = `#${canal.name}`;
+                select.appendChild(new Option(optionText, canal.id));
+              }
+            });
+          })
+          .catch((error) => {
+            console.error("Erro ao buscar canais:", error);
+          });
+      }
+      carregarCanais(id);
+
       welcomeMessageChecker.addEventListener("click", () => {
         if (welcomeMessageChecker.checked == true) {
           let caminho = "newMember.status";

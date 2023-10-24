@@ -39,17 +39,24 @@ if (isLoggedIn()) {
               data[0].userInformations.avatarURL;
             document.getElementById("usernameUserProfile").textContent =
               data[0].userInformations.username;
-            if (data[0].profile.banners.equipped == "TORII_GATE") {
+            if (data[0].profile.banners.equipped == "ONNY") {
               var element = document.getElementById("progressBarFill");
               element.style.background =
                 "linear-gradient(135deg, #ff1b6b 0%, #45caff 100%)";
               document.getElementById("bannerUserProfile").style.background =
-                "url('/themes/toriiGate/banner.jpg') center / cover no-repeat";
+                "url('/themes/onny/banner.jpg') center / cover no-repeat";
+            } else if (data[0].profile.banners.equipped == "CYBERPUNK") {
+              var element = document.getElementById("progressBarFill");
+              element.style.background =
+                "linear-gradient(135deg, #1FFDF0 0%, #FD471E 100%)";
+              document.getElementById("bannerUserProfile").style.background =
+                "url('/themes/cyberpunk/banner.jpg') center / cover no-repeat";
             } else if (data[0].profile.banners.equipped == "PADRAO") {
               var element = document.getElementById("progressBarFill");
               element.style.background = "#E94F4D";
-              document.getElementById("bannerUserProfile").style.backgroundColor =
-                "#2b2d31";
+              document.getElementById(
+                "bannerUserProfile"
+              ).style.backgroundColor = "#2b2d31";
             }
 
             document.getElementById(

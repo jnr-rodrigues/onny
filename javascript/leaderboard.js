@@ -58,8 +58,11 @@ function fetchData() {
             imageDiv.style.width = "35%";
             imageDiv.style.height = "100%";
 
-            if (userData.profile.banners.equipped == "TORII_GATE") {
-              imageDiv.style.background = `url('/themes/toriiGate/banner.jpg') center left no-repeat`;
+            if (userData.profile.banners.equipped == "ONNY") {
+              imageDiv.style.background = `url('/themes/onny/banner.jpg') center left no-repeat`;
+              imageDiv.style.backgroundSize = "cover";
+            } else if (userData.profile.banners.equipped == "CYBERPUNK") {
+              imageDiv.style.background = `url('/themes/cyberpunk/banner.jpg') center left no-repeat`;
               imageDiv.style.backgroundSize = "cover";
             } else if (userData.profile.banners.equipped == "PADRAO") {
               imageDiv.style.background = `url('https://cdn.discordapp.com/attachments/1039517691242877008/1164558617278689423/desktop-wallpaper-torii-artistic-pattern-minimalism-black-background-minimalism.png?ex=6543a6ba&is=653131ba&hm=037e03efdc38582851a12c5bd5ebf8bc84b49483832462a20555e5d1790a62b5&') center left no-repeat`;

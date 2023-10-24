@@ -19,6 +19,8 @@ app.use(express.static(__dirname)); // Configura o servidor para servir arquivos
 app.use(express.urlencoded({ extended: true })); // Configura o servidor para lidar com dados codificados de formulário
 app.use(express.json()); // Configura o servidor para lidar com dados no formato JSON
 
+const { userInfos, sendChannelsToServer } = require("./onny.js");
+
 // Estabelecimento da conexão com o banco de dados MongoDB
 mongoose
   .connect(
@@ -38,11 +40,11 @@ mongoose
 // Rotas e manipulação de requisições
 app.get("/auth/discord", (req, res) => {
   // Redireciona o usuário para a página de autorização do Discord
-  //res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=https%3A%2F%2Fonny.discloud.app%2F&response_type=token&scope=identify%20guilds`);
-  // Outro redirecionamento para desenvolvimento local (comentado)
   res.redirect(
-    `https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=token&scope=identify%20guilds`
+    `https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=https%3A%2F%2Fonny.discloud.app%2F&response_type=token&scope=identify%20guilds`
   );
+  // Outro redirecionamento para desenvolvimento local (comentado)
+  //res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=token&scope=identify%20guilds`);
 });
 
 app.get("/", async (req, res) => {
@@ -170,7 +172,7 @@ app.get("/api/users/:id", (req, res) => {
   Users.find({ id: userId })
     .then(async (user) => {
       if (user[0]) {
-        const infos = await UserInfos(userId);
+        const infos = await userInfos(userId);
         // Responde com informações do usuário em formato JSON
         const jsonBuild = user.map((u) => ({
           ...u.toJSON(),
@@ -193,7 +195,6 @@ app.post("/api/onny/leaderboard", (req, res) => {
   res.redirect(`/api/onny/leaderboard`);
 });
 
-const UserInfos = require("./onny");
 app.get("/api/onny/leaderboard", async (req, res) => {
   try {
     // Tenta buscar todos os usuários e classificá-los por onnycoins
@@ -203,7 +204,7 @@ app.get("/api/onny/leaderboard", async (req, res) => {
       // Responde com a classificação de usuários em formato JSON
       const jsonBuild = await Promise.all(
         users.map(async (user) => {
-          const infos = await UserInfos(user.id);
+          const infos = await userInfos(user.id);
           return {
             ...user.toJSON(),
             userInformations: infos !== "NOT_INFOS_FOUND" ? infos : "not_found",
@@ -243,6 +244,34 @@ app.get("/api/onny", (req, res) => {
   }
 });
 
+const collectedGuildData = {};
+app.post("/api/onny/guild/:id", (req, res) => {
+  const serverID = req.params.id;
+  const data = req.body;
+
+  // Armazene os dados recebidos no objeto usando o ID do servidor como chave
+  collectedGuildData[serverID] = data;
+  res.json({ message: "SEND" });
+});
+
+app.get("/api/onny/guild/:id", async (req, res) => {
+  const serverID = req.params.id;
+
+  // Chame a função para enviar os canais assim que a rota for acessada
+  await sendChannelsToServer(serverID);
+
+  if (collectedGuildData[serverID]) {
+    // Responda com os dados coletados para o servidor específico em formato JSON
+    res.json(collectedGuildData[serverID]);
+  } else {
+    // Responda com uma mensagem informando que não há dados coletados para este servidor
+    const data = {
+      message: "NOT_FOUND",
+    };
+    res.json(data);
+  }
+});
+
 app.post("/api/usuario/:id", (req, res) => {
   const userRedirect = req.params.id;
   // Redireciona o usuário para a rota correspondente ao usuário
@@ -255,8 +284,7 @@ app.get("/api/usuario/:id", async (req, res) => {
   await Users.find({ id: userId })
     .then(async (user) => {
       if (user[0]) {
-        const UserInfos = require("./onny");
-        let user = await UserInfos(userId);
+        let user = await userInfos(userId);
         // Responde com informações do usuário em formato JSON
         res.json(user);
       } else {

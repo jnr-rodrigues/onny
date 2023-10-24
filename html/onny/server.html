@@ -86,6 +86,7 @@
     />
     <script src="/javascript/guild.js"></script>
     <script src="/javascript/config.js"></script>
+    <script src="/javascript/databaseChanges.js"></script>
   </head>
 
   <div id="welcomeMessageConfigHUD" class="modal">
@@ -102,14 +103,14 @@
         boas-vindas!
       </p>
       <br />
-      <form>
+      <form id="welcomeMessageConfigChanges">
         <div style="display: inline-block; vertical-align: top; margin: 10px">
           <label style="color: #fff; font-size: 16px; margin: 5px" for="opcoes"
             >Tipo de mensagem</label
           >
           <br />
           <select
-            id="opcoes"
+            id="newMember.message.type"
             style="
               margin: 5px;
               padding: 5px;
@@ -118,11 +119,11 @@
               color: #fff;
               cursor: pointer;
             "
-            name="opcao"
+            name="newMember.message.type"
           >
             <option value="embed">Embed</option>
             <option value="text">Texto</option>
-            <option value="image" disabled>Imagem (Premium)</option>
+            <option value="image" disabled>Imagem (Em breve!)</option>
           </select>
         </div>
         <div style="display: inline-block; vertical-align: top; margin: 10px">
@@ -131,7 +132,7 @@
           >
           <br />
           <select
-            id="opcoes"
+            id="newMember.channel"
             style="
               margin: 5px;
               padding: 5px;
@@ -140,10 +141,8 @@
               color: #fff;
               cursor: pointer;
             "
-            name="opcao"
-          >
-            <option value="false">Escolha da Onny</option>
-          </select>
+            name="newMember.channel"
+          ></select>
         </div>
         <br />
         <div style="display: inline-block; vertical-align: top; margin: 10px">
@@ -162,32 +161,10 @@
               max-width: 100%;
             "
             type=""
-            id="titulo"
+            id="newMember.message.title"
             placeholder="Informe um titulo de até 32 caracteres!"
-            name="titulo"
+            name="newMember.message.title"
             maxlength="32"
-          />
-        </div>
-        <div style="display: inline-block; vertical-align: top; margin: 10px">
-          <label style="color: #fff; font-size: 16px; margin: 5px" for="footer"
-            >Rodapé da mensagem</label
-          >
-          <br />
-          <input
-            style="
-              margin: 5px;
-              padding: 5px;
-              border-radius: 10px;
-              background-color: #2b2d31;
-              color: #fff;
-              min-width: 350px;
-              max-width: 100%;
-            "
-            type=""
-            id="footer"
-            placeholder="Informe um rodapé de até 20 caracteres!"
-            name="footer"
-            maxlength="20"
           />
         </div>
         <br />
@@ -226,9 +203,9 @@
               min-width: 740px;
               max-width: 100%;
             "
-            id="descricao"
+            id="newMember.message.description"
             placeholder="Escreva uma descrição para a mensagem de até 180 caracteres!"
-            name="descricao"
+            name="newMember.message.description"
             maxlength="180"
           ></textarea>
         </div>
@@ -237,6 +214,7 @@
           class="w3-buttonLogout w3-text-white w3-margin-right"
           style="border-radius: 5px; background-color: #4070dc; margin: 5px"
           type="submit"
+          onclick="waitChanges()"
         >
           Salvar
         </button>
@@ -254,6 +232,11 @@
           Sair sem salvar!
         </a>
       </form>
+      <script>
+        function waitChanges() {
+          alert("Aguarde enquanto as mudanças são realizadas...");
+        }
+      </script>
     </div>
   </div>
 

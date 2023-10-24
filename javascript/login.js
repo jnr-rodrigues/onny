@@ -38,11 +38,16 @@ if (isLoggedIn()) {
           if (Array.isArray(data) && data.length > 0) {
             const user = data[0]; // Use the first item in the array
 
-            if (user.profile.banners.equipped == "TORII_GATE") {
+            if (user.profile.banners.equipped == "ONNY") {
               document.getElementById("progressBarFill").style.background =
                 "linear-gradient(135deg, #ff1b6b 0%, #45caff 100%)";
               document.getElementById("profileBackground").style.background =
-                "url('/themes/toriiGate/banner.jpg') center left no-repeat";
+                "url('/themes/onny/banner.jpg') center center no-repeat";
+            } else if (user.profile.banners.equipped == "CYBERPUNK") {
+              document.getElementById("progressBarFill").style.background =
+                "linear-gradient(135deg, #1FFDF0 0%, #FD471E 100%)";
+              document.getElementById("profileBackground").style.background =
+                "url('/themes/cyberpunk/banner.jpg') center center no-repeat";
             } else if (user.profile.banners.equipped == "PADRAO") {
               document.getElementById("progressBarFill").style.background =
                 "#E94F4D";
