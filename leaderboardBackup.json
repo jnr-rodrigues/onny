@@ -860,12 +860,16 @@
       "globalName": "Calangou",
       "discriminator": "0",
       "avatar": "3b5f4b3e043b976354b3eead92eae7a7",
+      "banner": null,
+      "accentColor": 583732,
       "avatarDecoration": null,
       "createdTimestamp": 1640182198264,
       "defaultAvatarURL": "https://cdn.discordapp.com/embed/avatars/4.png",
+      "hexAccentColor": "#08e834",
       "tag": "calangou",
       "avatarURL": "https://cdn.discordapp.com/avatars/923215795906031678/3b5f4b3e043b976354b3eead92eae7a7.webp",
-      "displayAvatarURL": "https://cdn.discordapp.com/avatars/923215795906031678/3b5f4b3e043b976354b3eead92eae7a7.webp"
+      "displayAvatarURL": "https://cdn.discordapp.com/avatars/923215795906031678/3b5f4b3e043b976354b3eead92eae7a7.webp",
+      "bannerURL": null
     }
   },
   {
@@ -1486,12 +1490,16 @@
       "globalName": "tuca",
       "discriminator": "0",
       "avatar": "b4bdf4656b07321464993887eca1cab7",
+      "banner": null,
+      "accentColor": null,
       "avatarDecoration": null,
       "createdTimestamp": 1503267250984,
       "defaultAvatarURL": "https://cdn.discordapp.com/embed/avatars/4.png",
+      "hexAccentColor": null,
       "tag": "tuqueta",
       "avatarURL": "https://cdn.discordapp.com/avatars/348952884869857293/b4bdf4656b07321464993887eca1cab7.webp",
-      "displayAvatarURL": "https://cdn.discordapp.com/avatars/348952884869857293/b4bdf4656b07321464993887eca1cab7.webp"
+      "displayAvatarURL": "https://cdn.discordapp.com/avatars/348952884869857293/b4bdf4656b07321464993887eca1cab7.webp",
+      "bannerURL": null
     }
   },
   {
@@ -2303,19 +2311,19 @@
       "bot": false,
       "system": false,
       "flags": 64,
-      "username": "xluisxz",
-      "globalName": "LUISxz",
-      "discriminator": "0",
-      "avatar": "28931d32b69c6ae4ed9e3913ad9e4c05",
+      "username": "Deleted User 4c7d9516",
+      "globalName": null,
+      "discriminator": "8597",
+      "avatar": null,
       "banner": null,
-      "accentColor": 0,
+      "accentColor": null,
       "avatarDecoration": null,
       "createdTimestamp": 1580392785912,
-      "defaultAvatarURL": "https://cdn.discordapp.com/embed/avatars/0.png",
-      "hexAccentColor": "#000000",
-      "tag": "xluisxz",
-      "avatarURL": "https://cdn.discordapp.com/avatars/672440824520245303/28931d32b69c6ae4ed9e3913ad9e4c05.webp",
-      "displayAvatarURL": "https://cdn.discordapp.com/avatars/672440824520245303/28931d32b69c6ae4ed9e3913ad9e4c05.webp",
+      "defaultAvatarURL": "https://cdn.discordapp.com/embed/avatars/2.png",
+      "hexAccentColor": null,
+      "tag": "Deleted User 4c7d9516#8597",
+      "avatarURL": null,
+      "displayAvatarURL": "https://cdn.discordapp.com/embed/avatars/2.png",
       "bannerURL": null
     }
   },
@@ -3937,16 +3945,12 @@
       "globalName": "zthop",
       "discriminator": "0",
       "avatar": "b8594e106911e8f29afbba31930afd58",
-      "banner": null,
-      "accentColor": 1381653,
       "avatarDecoration": null,
       "createdTimestamp": 1641506109595,
       "defaultAvatarURL": "https://cdn.discordapp.com/embed/avatars/1.png",
-      "hexAccentColor": "#151515",
       "tag": "zthop",
       "avatarURL": "https://cdn.discordapp.com/avatars/928768682497294436/b8594e106911e8f29afbba31930afd58.webp",
-      "displayAvatarURL": "https://cdn.discordapp.com/avatars/928768682497294436/b8594e106911e8f29afbba31930afd58.webp",
-      "bannerURL": null
+      "displayAvatarURL": "https://cdn.discordapp.com/avatars/928768682497294436/b8594e106911e8f29afbba31930afd58.webp"
     }
   },
   {
@@ -6114,7 +6118,7 @@
       "username": "1niq",
       "globalName": "nico",
       "discriminator": "0",
-      "avatar": "6c8daa3c3ba23477cbb58f4d1c039762",
+      "avatar": "7ca1e7fc916a052938c5403c6224afbb",
       "banner": null,
       "accentColor": 657932,
       "avatarDecoration": null,
@@ -6122,8 +6126,8 @@
       "defaultAvatarURL": "https://cdn.discordapp.com/embed/avatars/3.png",
       "hexAccentColor": "#0a0a0c",
       "tag": "1niq",
-      "avatarURL": "https://cdn.discordapp.com/avatars/1134502949243080806/6c8daa3c3ba23477cbb58f4d1c039762.webp",
-      "displayAvatarURL": "https://cdn.discordapp.com/avatars/1134502949243080806/6c8daa3c3ba23477cbb58f4d1c039762.webp",
+      "avatarURL": "https://cdn.discordapp.com/avatars/1134502949243080806/7ca1e7fc916a052938c5403c6224afbb.webp",
+      "displayAvatarURL": "https://cdn.discordapp.com/avatars/1134502949243080806/7ca1e7fc916a052938c5403c6224afbb.webp",
       "bannerURL": null
     }
   },
@@ -6180,12 +6184,16 @@
       "globalName": "FelipeF",
       "discriminator": "0",
       "avatar": "a_5cdfe697ce17b92ed2ec40b202dcd5ed",
+      "banner": "f2a25800d1f9a11830841dcbfb09a7b6",
+      "accentColor": 13828100,
       "avatarDecoration": null,
       "createdTimestamp": 1515200464376,
       "defaultAvatarURL": "https://cdn.discordapp.com/embed/avatars/2.png",
+      "hexAccentColor": "#d30004",
       "tag": "fe.lipef_",
       "avatarURL": "https://cdn.discordapp.com/avatars/399004409532645376/a_5cdfe697ce17b92ed2ec40b202dcd5ed.gif",
-      "displayAvatarURL": "https://cdn.discordapp.com/avatars/399004409532645376/a_5cdfe697ce17b92ed2ec40b202dcd5ed.gif"
+      "displayAvatarURL": "https://cdn.discordapp.com/avatars/399004409532645376/a_5cdfe697ce17b92ed2ec40b202dcd5ed.gif",
+      "bannerURL": "https://cdn.discordapp.com/banners/399004409532645376/f2a25800d1f9a11830841dcbfb09a7b6.webp"
     }
   },
   {

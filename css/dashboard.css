@@ -1092,6 +1092,18 @@ body {
   z-index: 99999;
 }
 
+.mac-dock1 {
+  position: fixed;
+  top: 0;
+  right: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  padding: 8px 16px;
+  color: white;
+  z-index: 99999;
+}
+
 .dock-item {
   padding: 4px 8px;
   cursor: pointer;
