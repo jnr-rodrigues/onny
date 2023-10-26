@@ -11,16 +11,21 @@ var guildSchema = mongoose.Schema({
   },
   newMember: {
     message: {
-      title: { type: String, default: "" },
-      description: { type: String, default: "" },
+      title: { type: String, default: "Bem-vindo(a), ao {server}!" },
+      description: {
+        type: String,
+        default:
+          "Olá {user}! Tudo bom? Seja bem-vindo(a) ao servidor. Divirta-se!",
+      },
       topic: { type: Array, default: [] },
-      type: { type: String, default: "" },
+      type: { type: String, default: "text" },
     },
     channel: { type: String, default: "" },
     status: { type: String, default: "disabled" },
   },
   badges: { type: Array, default: [] },
   language: { type: String, default: "pt-BR" },
+  changes: { type: Array, default: [] },
 });
 
 module.exports = mongoose.model("Guild", guildSchema, "guild");

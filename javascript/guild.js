@@ -138,12 +138,115 @@ if (isLoggedIn()) {
   const urlParts = window.location.pathname.split("/");
   const idIndex = urlParts.indexOf("servidor") + 1;
   const id = urlParts[idIndex];
+  const logsCaminho = "changes";
+
+  function loadAndReloadLogs() {
+    fetch(`/api/guild/database/${id}`)
+      .then((result) => result.json())
+      .then(async (data) => {
+        const changesMessages = data[0].changes.reverse();
+        const logsChangesMessages = document.getElementById(
+          "logsChangesMessages"
+        );
+        logsChangesMessages.innerHTML = "";
+
+        let currentDateString = null;
+        let currentMessages = [];
+
+        if (changesMessages.length === 0) {
+          // Se não houver registros, exiba uma mensagem
+          const noRecordsMessage = document.createElement("div");
+          noRecordsMessage.classList = "w3-text-white";
+          noRecordsMessage.style.fontSize = "14px";
+          noRecordsMessage.textContent =
+            "Nenhuma alteração foi realizada até o momento!";
+          logsChangesMessages.appendChild(noRecordsMessage);
+          return; // Não é necessário continuar se não houver registros
+        }
+
+        changesMessages.forEach((message) => {
+          const matches = /^\[(.*?)\](.*)$/.exec(message);
+          if (matches) {
+            const dateAndTime = matches[1].split(",");
+            const date = dateAndTime[0].trim(); // Extrai a data no formato "25 de out"
+            const time = dateAndTime[1].trim(); // Extrai o horário (11:55)
+            const messageText = matches[2].trim();
+
+            if (currentDateString === null) {
+              currentDateString = date;
+            } else if (currentDateString !== date) {
+              renderMessages(
+                logsChangesMessages,
+                currentDateString,
+                currentMessages
+              );
+              currentMessages = [];
+              currentDateString = date;
+            }
+
+            currentMessages.push(
+              `<div class="changesDashboard" style="background-color: #2b2d31; padding: 10px; margin: 10px; border-radius: 5px; cursor: pointer;"><span style="vertical-align: middle;">${messageText}</span> <p style="font-weight: 300; font-size: 10px; text-align: right; bottom: 2; display: inline-block;">${time}</p></div>`
+            );
+          }
+        });
+
+        if (currentDateString !== null) {
+          renderMessages(
+            logsChangesMessages,
+            currentDateString,
+            currentMessages
+          );
+        }
+      });
+
+    function renderMessages(container, date, messages) {
+      const dateElement = document.createElement("div");
+      dateElement.classList = "w3-text-gray";
+      dateElement.textContent = date;
+      container.appendChild(dateElement);
+
+      messages.forEach((message) => {
+        const messageElement = document.createElement("div");
+        messageElement.style.fontSize = "14px";
+        messageElement.innerHTML = message;
+        container.appendChild(messageElement);
+      });
+    }
+  }
+
+  loadAndReloadLogs();
+  setInterval(loadAndReloadLogs, 10000);
+
   fetch(`/api/guild/database/${id}`)
     .then((result) => result.json())
     .then(async (data) => {
       /*
        *    WELCOME MESSAGE CONFIGURATIONS:
        */
+
+      /** Definindo configurações atuais no Dashboard: */
+
+      var selectElement = document.getElementById("newMember.message.type");
+      var valueToSelect = data[0].newMember.message.type;
+
+      for (var i = 0; i < selectElement.options.length; i++) {
+        if (selectElement.options[i].value === valueToSelect) {
+          selectElement.selectedIndex = i;
+          break; // Encerra o loop quando a opção é encontrada
+        }
+      }
+
+      var inputElement = document.getElementById("newMember.message.title");
+      var valueToSet = data[0].newMember.message.title;
+      inputElement.value = valueToSet;
+
+      var inputElement = document.getElementById(
+        "newMember.message.description"
+      );
+      var valueToSet = data[0].newMember.message.description;
+      inputElement.value = valueToSet;
+
+      /** Outras interações: */
 
       var welcomeMessage = document.getElementById("welcomeMessage");
       welcomeMessage.style.opacity = "1";
@@ -203,6 +306,19 @@ if (isLoggedIn()) {
             .then((response) => response.json())
             .then((data) => {
               console.log(`No caminho "${caminho}" foi definido: ${value}`);
+              logValue = `[${formatDateToCustomString(
+                new Date()
+              )}] Mensagem de boas-vindas foi habilitada!`;
+              fetch(`/api/onny/database/insert/guilds`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id, logsCaminho, logValue }),
+              }).catch((error) => {
+                console.error("Erro:", error);
+              });
+
               let welcomeMessageActived = document.getElementById(
                 "welcomeMessageActived"
               );
@@ -229,6 +345,18 @@ if (isLoggedIn()) {
             .then((response) => response.json())
             .then((data) => {
               console.log(`No caminho "${caminho}" foi definido: ${value}`);
+              logValue = `[${formatDateToCustomString(
+                new Date()
+              )}] Mensagem de boas-vindas foi desabilitada!`;
+              fetch(`/api/onny/database/insert/guilds`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ id, logsCaminho, logValue }),
+              }).catch((error) => {
+                console.error("Erro:", error);
+              });
               let welcomeMessageDisabled = document.getElementById(
                 "welcomeMessageDisabled"
               );

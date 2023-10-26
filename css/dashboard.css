@@ -248,6 +248,11 @@ body {
   top: -5px;
 }
 
+.changesDashboard:hover {
+  transform: scale(1.02);
+  top: -5px;
+}
+
 #allGuilds {
   max-height: 400px;
   min-height: 400px;
@@ -999,6 +1004,7 @@ body {
   position: relative;
   display: inline-block;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .helptooltip-text {
@@ -1083,6 +1089,7 @@ body {
   justify-content: center;
   padding: 8px 16px;
   color: white;
+  z-index: 99999;
 }
 
 .dock-item {

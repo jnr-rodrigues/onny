@@ -333,19 +333,81 @@ app.post("/api/onny/database/update/:type", async (req, res) => {
 
   if (type === "guilds") {
     try {
-      const updateObj = {};
-      updateObj[caminho] = value;
+      // Consulta o valor atual no banco de dados
+      const guild = await Guilds.findOne({ id: id });
+
+      // Verifica se o valor atual é diferente do novo valor
+      if (guild && guild[caminho] !== value) {
+        const updateObj = {};
+        updateObj[caminho] = value;
+
+        // Atualiza o banco de dados do servidor com os dados fornecidos
+        const result = await Guilds.findOneAndUpdate({ id: id }, updateObj);
+
+        if (result) {
+          res.json({ success: true });
+        } else {
+          res.json({ success: false });
+        }
+      } else {
+        // Valor igual, não é necessário atualizar
+        res.json({ message: `Valor ${caminho} não foi alterado.` });
+      }
+    } catch (error) {
+      console.error(error);
+      // Responde com um status 500 e uma mensagem de erro em caso de falha na atualização
+      res.status(500).json({
+        success: false,
+        error: "Erro ao atualizar o " + caminho + " do guild.",
+      });
+    }
+  }
+});
+
+app.post("/api/onny/database/insert/:type", async (req, res) => {
+  const { type } = req.params;
+  const { id, logsCaminho, logValue } = req.body;
+
+  if (type === "guilds") {
+    try {
+      // Define o objeto de atualização com o operador $push para inserir no array
+      const updateObj = { $push: { [logsCaminho]: logValue } };
 
       // Atualiza o banco de dados do servidor com os dados fornecidos
       const result = await Guilds.findOneAndUpdate({ id: id }, updateObj);
-      res.json(result);
+
+      if (result) {
+        res.json({ success: true });
+      } else {
+        res.json({ success: false });
+      }
     } catch (error) {
       console.error(error);
       // Responde com um status 500 e uma mensagem de erro em caso de falha na atualização
       res
         .status(500)
-        .json({ error: "Erro ao atualizar o " + caminho + " do guild." });
+        .json({ error: "Erro ao inserir no " + logsCaminho + " do guild." });
     }
+  }
+});
+
+app.get("/api/onny/database/get/guilds/:id", async (req, res) => {
+  const { id } = req.params;
+
+  // Consulte o banco de dados para obter os dados do servidor com base no ID
+  try {
+    const guildData = await Guilds.findOne({ id: id });
+
+    if (guildData) {
+      // Se os dados do servidor forem encontrados, retorne-os como uma resposta JSON
+      res.json(guildData);
+    } else {
+      // Se o servidor não for encontrado, retorne uma resposta vazia ou um status de erro
+      res.status(404).json({ error: "Servidor não encontrado" });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Erro ao buscar os dados do servidor" });
   }
 });
 
