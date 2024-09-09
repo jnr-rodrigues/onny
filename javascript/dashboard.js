@@ -14,6 +14,14 @@ function isLoggedIn() {
   return getAccessToken() !== null;
 }
 
+function getTitle(title) {
+  if (title == "USUARIO") {
+    return "Usuário da Onny"
+  } else if (title == "DEVELOPER") {
+    return "Desenvolvedor(a) da Onny"
+  }
+}
+
 if (isLoggedIn()) {
   const secretsUser = `Bearer ${getAccessToken()}`;
 
@@ -67,6 +75,7 @@ if (isLoggedIn()) {
               "sobremimUserProfile"
             ).textContent = `${data[0].description}`;
             let totalOnnycoins = 0;
+            
             await fetch("/api/onny/leaderboard")
               .then((response) => response.json())
               .then((data) => {
@@ -87,9 +96,8 @@ if (isLoggedIn()) {
 
             document.getElementById(
               "percentUserProfile"
-            ).textContent = `Dono(a) de ${
-              isNaN(percentUserProfile) ? "0" : percentUserProfile
-            }% da economia.`;
+            ).textContent = `Dono(a) de ${isNaN(percentUserProfile) ? "0" : percentUserProfile
+              }% da economia.`;
             document.getElementById(
               "cashUserProfile"
             ).textContent = `Cash: ${abreviarNumero(data[0].onnycash)}`;

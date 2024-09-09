@@ -16,6 +16,14 @@ function isLoggedIn() {
   return getAccessToken() !== null;
 }
 
+function getTitle(title) {
+  if (title == "USUARIO") {
+    return "Usuário da Onny"
+  } else if (title == "DEVELOPER") {
+    return "Desenvolvedor(a) da Onny"
+  }
+}
+
 if (isLoggedIn()) {
   const secretsUser = `Bearer ${getAccessToken()}`;
 
@@ -26,6 +34,10 @@ if (isLoggedIn()) {
   })
     .then((result) => result.json())
     .then(async (response) => {
+
+      document.getElementById("helpLoged").style.display = "block";
+      document.getElementById("helpNoLoged").style.display = "none";
+
       const { global_name, discriminator, avatar, id } = response;
       if (!global_name || global_name === "undefined") {
         return;
@@ -62,9 +74,8 @@ if (isLoggedIn()) {
               .classList.remove("rotateLoad");
             document.getElementById("profileUserName").textContent =
               user.userInformations.username;
-            document.getElementById("profileUserTitle").textContent = getTitle(
-              user.profile.titles.equipped
-            );
+            document.getElementById("profileUserTitle").textContent = 
+              getTitle(user.profile.titles.equipped)
 
             let totalOnnycoins = 0;
             await fetch("/api/onny/leaderboard/generated")
@@ -160,8 +171,6 @@ if (isLoggedIn()) {
 
             updateProgressBar(Exp, totalExp);
 
-            document.getElementById("helpLoged").style.display = "block";
-            document.getElementById("helpNoLoged").style.display = "none";
           }
         });
     })

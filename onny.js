@@ -154,7 +154,7 @@ async function sendBotInfoToServer() {
       ping, // Ping do WebSocket
     };
 
-    const response = await fetch("https://onny.discloud.app/api/onny", {
+    const response = await fetch("http://localhost:8080/api/onny", {
       method: "POST", // Envia uma requisição POST para a URL especificada
       headers: {
         "Content-Type": "application/json",
@@ -194,7 +194,7 @@ async function sendChannelsToServer(serverID) {
       channels,
     };
 
-    const url = `https://onny.discloud.app/api/onny/guild/${serverID}`;
+    const url = `http://localhost:8080/api/onny/guild/${serverID}`;
 
     const response = await fetch(url, {
       method: "POST",

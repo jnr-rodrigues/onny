@@ -1,10 +1,10 @@
 function fetchData() {
-  fetch("https://onny.discloud.app/api/onny/leaderboard/generated")
+  fetch("http://localhost:8080/api/onny/leaderboard/generated")
     .then((result) => result.json())
     .then(async (jsonData) => {
       if (Array.isArray(jsonData)) {
         let totalOnnycoins = 0;
-        await fetch("https://onny.discloud.app/api/onny/leaderboard/generated")
+        await fetch("http://localhost:8080/api/onny/leaderboard/generated")
           .then((response) => response.json())
           .then((data) => {
             if (data.length > 0) {
@@ -106,21 +106,19 @@ function fetchData() {
 
             if (userData.atualPosition > userData.anteriorPosition) {
               userPositionImage.src =
-                "https://cdn.discordapp.com/attachments/1039517691242877008/1164338330700353647/angulo-para-baixo_1.png?ex=6542d992&is=65306492&hm=1965732a5954a7235f8693816ddbf549595d971f30be5bb676a7a65241edbd90&";
+                "https://cdn.discordapp.com/attachments/1272378624464523297/1282524177122725898/up-arrow.png?ex=66dfab37&is=66de59b7&hm=955361cf1043cbc480d136b54aa014c4ecb9dea52b36adbb63fa49b0de85d414&";
               userPositionImage.style.width = "25px";
-              userDescription.textContent = `Estava anteriormente na ${
-                userData.anteriorPosition + 1
-              }° posição!`;
+              userDescription.textContent = `Estava anteriormente na ${userData.anteriorPosition + 1
+                }° posição!`;
             } else if (userData.atualPosition < userData.anteriorPosition) {
               userPositionImage.src =
-                "https://cdn.discordapp.com/attachments/1039517691242877008/1164338330423525386/angulo-para-cima.png?ex=6542d992&is=65306492&hm=b4dc0c957097f53692f37707d0ed08abc04d87d385f8735ce89d933d9a16ef28&";
+                "https://cdn.discordapp.com/attachments/1272378624464523297/1282524177386962994/down-arrow.png?ex=66dfab38&is=66de59b8&hm=b53ba1ac144c6ea53d0cf0810e969c65016a1fe75c8896a2eecc89a9026b2426&";
               userPositionImage.style.width = "25px";
-              userDescription.textContent = `Estava anteriormente na ${
-                userData.anteriorPosition + 1
-              }° posição!`;
+              userDescription.textContent = `Estava anteriormente na ${userData.anteriorPosition + 1
+                }° posição!`;
             } else if (userData.atualPosition == userData.anteriorPosition) {
               userPositionImage.src =
-                "https://cdn.discordapp.com/attachments/1039517691242877008/1164340520387104818/arrastar_1.png?ex=6542db9c&is=6530669c&hm=7a9e5892c86279d3aa04982005e3a3fb626bf9bf624acb44b0a2746d5ed72e2f&";
+                "https://cdn.discordapp.com/attachments/1272378624464523297/1282524548541059114/approximation.png?ex=66dfab90&is=66de5a10&hm=2f0eb28b5c006388ccf36b0f785ae152ce31f7d5a1a59f3e0e8efde734a4d1fd&";
               userPositionImage.style.width = "15px";
               userDescription.textContent = `Continuou na mesma posição!`;
             }
@@ -178,9 +176,8 @@ function fetchData() {
               totalOnnycoins
             ).toFixed(2);
 
-            coinsText1Description.textContent = `Dono(a) de ${
-              isNaN(percentUserProfile) ? "0" : percentUserProfile
-            }% da economia.`;
+            coinsText1Description.textContent = `Dono(a) de ${isNaN(percentUserProfile) ? "0" : percentUserProfile
+              }% da economia.`;
             coinsText1.appendChild(coinsText1Description);
 
             const cashText1 = document.createElement("p");

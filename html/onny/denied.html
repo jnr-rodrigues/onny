@@ -42,21 +42,18 @@
       window.addEventListener("contextmenu", function (e) {
         e.preventDefault();
       });
-      // Impede o menu de contexto ao clicar com o botão direito do mouse
 
       window.addEventListener("keydown", function (e) {
         if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
           e.preventDefault();
         }
       });
-      // Impede a abertura das ferramentas de desenvolvedor com Ctrl+Shift+I
 
       window.addEventListener("keydown", function (e) {
         if ((e.ctrlKey || e.metaKey) && e.key === "u") {
           e.preventDefault();
         }
       });
-      // Impede a visualização do código-fonte com Ctrl+U
 
       window.addEventListener("keydown", function (e) {
         if (e.key === "F12") {
@@ -69,11 +66,9 @@
           window.location.href = "/insupported";
         }
       }
-      // Redireciona para outra página se a largura da janela for menor ou igual a 1450px
 
       verificarResolucao();
       window.addEventListener("resize", verificarResolucao);
-      // Executa a função verificarResolucao() e adiciona um ouvinte de evento de redimensionamento da janela
     </script>
   </head>
 

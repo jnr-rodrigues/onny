@@ -6,7 +6,6 @@ const fs = require("fs"); // Importa o módulo 'fs' para lidar com operações d
 const app = express(); // Cria uma instância do servidor web usando o Express
 const axios = require("axios"); // Importa o módulo 'axios' para fazer solicitações HTTP
 const crypto = require("crypto"); // Importa o módulo 'crypto' para operações de criptografia
-const discloud = require("discloud.app"); // Importa o módulo 'discloud.app' para alguma funcionalidade específica
 
 // Importação de módulos personalizados
 const Applications = require("./database/Applications"); // Importa o módulo 'Applications' de um arquivo personalizado
@@ -40,11 +39,9 @@ mongoose
 // Rotas e manipulação de requisições
 app.get("/auth/discord", (req, res) => {
   // Redireciona o usuário para a página de autorização do Discord
-  res.redirect(
-    `https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=https%3A%2F%2Fonny.discloud.app%2F&response_type=token&scope=identify%20guilds`
-  );
+  //res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=https%3A%2F%2Fonny.discloud.app%2F&response_type=token&scope=identify%20guilds`);
   // Outro redirecionamento para desenvolvimento local (comentado)
-  //res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=token&scope=identify%20guilds`);
+  res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=token&scope=identify%20guilds`);
 });
 
 app.get("/", async (req, res) => {
@@ -420,7 +417,7 @@ const performBackup = async () => {
   try {
     // Realize uma solicitação para a sua API de leaderboard para obter os dados
     const response = await axios.get(
-      "https://onny.discloud.app/api/onny/leaderboard"
+      "http://localhost:8080/api/onny/leaderboard"
     );
 
     // Salve os dados de backup em um arquivo JSON
