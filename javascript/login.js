@@ -109,21 +109,21 @@ if (isLoggedIn()) {
             }
 
             document.getElementById(
-              "profileUserCoins"
-            ).textContent = `Coins: ${abreviarNumero(user.onnycoins)}`;
+              "coinsUserProfile"
+            ).textContent = `${abreviarNumero(user.onnycoins)}`;
             const percentUserProfile = (
               (user.onnycoins * 100) /
               totalOnnycoins
             ).toFixed(2);
 
             document.getElementById(
-              "profileUserPercent"
+              "percentUserProfile"
             ).textContent = `Dono(a) de ${
               isNaN(percentUserProfile) ? "0" : percentUserProfile
             }% da economia.`;
             document.getElementById(
-              "profileUserCash"
-            ).textContent = `Cash: ${abreviarNumero(user.onnycash)}`;
+              "cashUserProfile"
+            ).textContent = `${abreviarNumero(user.onnycash)}`;
 
             document.getElementById("userExp").innerText = user.exp.xp;
             document.getElementById("separator").innerText = "/";

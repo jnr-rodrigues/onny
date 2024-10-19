@@ -64,9 +64,7 @@ function fetchData() {
             } else if (userData.profile.banners.equipped == "CYBERPUNK") {
               imageDiv.style.background = `url('/themes/cyberpunk/banner.jpg') center left no-repeat`;
               imageDiv.style.backgroundSize = "cover";
-            } else if (userData.profile.banners.equipped == "PADRAO") {
-              imageDiv.style.background = `url('https://cdn.discordapp.com/attachments/1039517691242877008/1164558617278689423/desktop-wallpaper-torii-artistic-pattern-minimalism-black-background-minimalism.png?ex=6543a6ba&is=653131ba&hm=037e03efdc38582851a12c5bd5ebf8bc84b49483832462a20555e5d1790a62b5&') center left no-repeat`;
-            }
+            };
 
             // Crie a imagem do usuário
             const userImage = document.createElement("img");
@@ -105,22 +103,17 @@ function fetchData() {
             userDescription.style.marginTop = "-10px";
 
             if (userData.atualPosition > userData.anteriorPosition) {
-              userPositionImage.src =
-                "https://cdn.discordapp.com/attachments/1272378624464523297/1282524177122725898/up-arrow.png?ex=66dfab37&is=66de59b7&hm=955361cf1043cbc480d136b54aa014c4ecb9dea52b36adbb63fa49b0de85d414&";
+              userPositionImage.src = `/icons/leaderboard/up-arrow.png`;
               userPositionImage.style.width = "25px";
-              userDescription.textContent = `Estava anteriormente na ${userData.anteriorPosition + 1
-                }° posição!`;
+              userDescription.textContent = `Uhuu! Subiu para a ${userData.atualPosition + 1}° posição.`; // More positive tone
             } else if (userData.atualPosition < userData.anteriorPosition) {
-              userPositionImage.src =
-                "https://cdn.discordapp.com/attachments/1272378624464523297/1282524177386962994/down-arrow.png?ex=66dfab38&is=66de59b8&hm=b53ba1ac144c6ea53d0cf0810e969c65016a1fe75c8896a2eecc89a9026b2426&";
+              userPositionImage.src = `/icons/leaderboard/down-arrow.png`;
               userPositionImage.style.width = "25px";
-              userDescription.textContent = `Estava anteriormente na ${userData.anteriorPosition + 1
-                }° posição!`;
-            } else if (userData.atualPosition == userData.anteriorPosition) {
-              userPositionImage.src =
-                "https://cdn.discordapp.com/attachments/1272378624464523297/1282524548541059114/approximation.png?ex=66dfab90&is=66de5a10&hm=2f0eb28b5c006388ccf36b0f785ae152ce31f7d5a1a59f3e0e8efde734a4d1fd&";
-              userPositionImage.style.width = "15px";
-              userDescription.textContent = `Continuou na mesma posição!`;
+              userDescription.textContent = `Não desanime! Estava anteriormente na ${userData.anteriorPosition + 1}° posição.`; // Encouraging tone
+            } else {
+              userPositionImage.src = `/icons/leaderboard/approximation.png`;
+              userPositionImage.style.width = "20px";
+              userDescription.textContent = `Manteve sua posição no ranking!`; // Neutral tone
             }
             usernameHeading.appendChild(userPositionImage);
 

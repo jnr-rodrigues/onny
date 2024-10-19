@@ -14,6 +14,27 @@ function isLoggedIn() {
   return getAccessToken() !== null;
 }
 
+function abreviarNumero(numero) {
+  const abreviacoes = [
+    { valor: 1e3, sufixo: "K" },
+    { valor: 1e6, sufixo: "M" },
+    { valor: 1e9, sufixo: "B" },
+    { valor: 1e12, sufixo: "T" },
+  ];
+
+  for (let i = abreviacoes.length - 1; i >= 0; i--) {
+    const abreviacao = abreviacoes[i];
+    if (numero >= abreviacao.valor) {
+      return (
+        (numero / abreviacao.valor).toFixed(1) +
+        abreviacao.sufixo
+      );
+    }
+  }
+
+  return numero.toString();
+}
+
 function getTitle(title) {
   if (title == "USUARIO") {
     return "Usuário da Onny"
@@ -74,8 +95,8 @@ if (isLoggedIn()) {
             document.getElementById(
               "sobremimUserProfile"
             ).textContent = `${data[0].description}`;
+
             let totalOnnycoins = 0;
-            
             await fetch("/api/onny/leaderboard")
               .then((response) => response.json())
               .then((data) => {
@@ -88,19 +109,19 @@ if (isLoggedIn()) {
 
             document.getElementById(
               "coinsUserProfile"
-            ).textContent = `Coins: ${abreviarNumero(data[0].onnycoins)}`;
+            ).textContent = `${abreviarNumero(data[0].onnycoins)}`;
+
             const percentUserProfile = (
               (data[0].onnycoins * 100) /
               totalOnnycoins
             ).toFixed(2);
-
             document.getElementById(
               "percentUserProfile"
-            ).textContent = `Dono(a) de ${isNaN(percentUserProfile) ? "0" : percentUserProfile
-              }% da economia.`;
+            ).textContent = `Dono(a) de ${percentUserProfile}% da economia.`;
+
             document.getElementById(
               "cashUserProfile"
-            ).textContent = `Cash: ${abreviarNumero(data[0].onnycash)}`;
+            ).textContent = `${abreviarNumero(data[0].onnycash)}`;
 
             document.getElementById("userExp").innerText = data[0].exp.xp;
             document.getElementById("separator").innerText = "/";
@@ -184,7 +205,7 @@ if (isLoggedIn()) {
 
               let appImage = document.createElement("img");
               appImage.src =
-                "https://cdn.discordapp.com/attachments/1039517691242877008/1143263745188048896/image.png";
+                '../icons/planos/onny.png';
               appImage.className = "server-image";
 
               let appInfo = document.createElement("div");
@@ -262,27 +283,6 @@ if (isLoggedIn()) {
                 }
                 appName.textContent = data[i].name;
 
-                function abreviarNumero(numero) {
-                  const abreviacoes = [
-                    { valor: 1e3, sufixo: "K" },
-                    { valor: 1e6, sufixo: "M" },
-                    { valor: 1e9, sufixo: "B" },
-                    { valor: 1e12, sufixo: "T" },
-                  ];
-
-                  for (let i = abreviacoes.length - 1; i >= 0; i--) {
-                    const abreviacao = abreviacoes[i];
-                    if (numero >= abreviacao.valor) {
-                      return (
-                        (numero / abreviacao.valor).toFixed(1) +
-                        abreviacao.sufixo
-                      );
-                    }
-                  }
-
-                  return numero.toString();
-                }
-
                 let descApp = document.createElement("p");
                 descApp.style.textAlign = "left";
                 descApp.className = "server-description";
@@ -347,7 +347,7 @@ if (isLoggedIn()) {
           let imgGuild = "";
           if (!data[i].icon) {
             imgGuild =
-              "https://cdn.discordapp.com/attachments/1039517691242877008/1128074666364383394/d7b2ac2be0d74d97415c34df2e43c86f.png";
+              "../icons/social_media/discord.png";
           } else {
             imgGuild = `https://cdn.discordapp.com/icons/${data[i].id}/${data[i].icon}.png`;
           }

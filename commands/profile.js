@@ -4,14 +4,14 @@ const moment = require("moment");
 moment.updateLocale("pt-br");
 
 module.exports = {
-  cooldown: 5, // Tempo de espera necessário entre o uso do comando (em segundos)
+  cooldown: 5,
   data: new SlashCommandBuilder()
-    .setName("profile") // Define o nome do comando
-    .setDescription("Profile! Confira suas informações na Onny."), // Descrição do comando
+    .setName("profile")
+    .setDescription("Profile! Confira suas informações na Onny."), 
   async execute(interaction) {
-    await interaction.deferReply(); // Deferir a resposta inicial para evitar o tempo limite de resposta
+    await interaction.deferReply();
     await interaction.editReply({
-      content: `Clique [aqui](https://onny.discloud.app/profile/${interaction.user.id}) para acessar seu perfil.`,
+      content: `Clique [aqui](http://localhost:8080/profile/${interaction.user.id}) para acessar seu perfil.`,
     });
   },
 };

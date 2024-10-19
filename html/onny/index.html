@@ -41,37 +41,37 @@
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
   <script>
-      window.addEventListener("contextmenu", function (e) {
+    window.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+    });
+
+    window.addEventListener("keydown", function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
         e.preventDefault();
-      });
-
-      window.addEventListener("keydown", function (e) {
-        if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
-          e.preventDefault();
-        }
-      });
-
-      window.addEventListener("keydown", function (e) {
-        if ((e.ctrlKey || e.metaKey) && e.key === "u") {
-          e.preventDefault();
-        }
-      });
-
-      window.addEventListener("keydown", function (e) {
-        if (e.key === "F12") {
-          e.preventDefault();
-        }
-      });
-
-      function verificarResolucao() {
-        if (window.innerWidth <= 1450) {
-          window.location.href = "/insupported";
-        }
       }
+    });
 
-      verificarResolucao();
-      window.addEventListener("resize", verificarResolucao);
-    </script>
+    window.addEventListener("keydown", function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === "u") {
+        e.preventDefault();
+      }
+    });
+
+    window.addEventListener("keydown", function (e) {
+      if (e.key === "F12") {
+        e.preventDefault();
+      }
+    });
+
+    function verificarResolucao() {
+      if (window.innerWidth <= 1450) {
+        window.location.href = "/insupported";
+      }
+    }
+
+    verificarResolucao();
+    window.addEventListener("resize", verificarResolucao);
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -196,8 +196,7 @@
           padding-right: 180px;
         ">
       <img id="toggleRotationButton" class="dock-item right" style="border-radius: 10px; cursor: pointer;"
-        src="https://cdn.discordapp.com/attachments/1272378624464523297/1282521951134421115/navigation-arrow.png?ex=66dfa925&is=66de57a5&hm=bf95e5705734ec6f245bc6e0da5d18d567cfce3f20087e952583ffa507db051f&"
-        width="40px" />
+        src="../../icons/home/navigation-arrow.png" width="40px" />
     </button>
     <br />
     <div class="accounts" style="
@@ -246,9 +245,7 @@
               background: url('') center left no-repeat;
               background-size: contain;
             "></div>
-        <img id="profileAvatarURL"
-          src="https://cdn.discordapp.com/attachments/1272378624464523297/1282521527794794559/loading.png?ex=66dfa8c0&is=66de5740&hm=40d7a66cfd9269d061463353348e966384651e7f55f31709167cfd4b47fd69cf&"
-          class="rotateLoad" style="
+        <img id="profileAvatarURL" src="../../icons/home/loading.png" class="rotateLoad" style="
               display: inline-block;
               width: 60px;
               vertical-align: middle;
@@ -290,22 +287,26 @@
           <h4 class="w3-text-grey" style="margin-left: 10px; margin-right: 10px; font-size: 14px">
             Economia
           </h4>
-          <p id="profileUserCoins" class="w3-text-white" style="font-size: 14px">
-            Coins:
-          </p>
-          <p id="profileUserPercent" class="w3-text-gray" style="
-                text-align: left;
-                opacity: 0;
-                transform: translateY(-100%);
-                animation: slideIn 0.5s forwards;
-                font-size: 13px;
-                margin-top: -15px;
-              ">
-            Dono(a) de % da economia.
-          </p>
-          <p id="profileUserCash" class="w3-text-white" style="font-size: 14px">
-            Cash:
-          </p>
+          <div class="progress-info w3-text-white" style="
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    margin-top: -8px;
+                  ">
+            <img src="/icons/economy/coins.png" width="20px" style="display: inline-block;">
+            <p class="w3-text-white" style="display: inline-block; font-size: 16px; text-align: justify">
+            <p style="margin-left: 2px; display: inline-block; color: #f0f0f0">Você tem <span
+                style="color: #ffc24d; display: inline-block;" id="coinsUserProfile">???</span> coins!</p>
+            </p>
+            <p id="percentUserProfile" class="w3-text-grey" style="
+                      font-size: 12px;
+                      margin-top: -25px;
+                    ">Dono(a) de ???% da economia.</p>
+            <img src="/icons/economy/cash.png" width="20px" style="display: inline-block;">
+            <p class="w3-text-white" style="display: inline-block; font-size: 16px; text-align: justify">
+            <p style="margin-left: 2px; display: inline-block; color: #f0f0f0">Você tem <span
+                style="color: #ff5364; display: inline-block;" id="cashUserProfile">???</span> de cash.</p>
+            </p>
+          </div>
         </div>
         <div class="w3-text-gray" style="
               text-align: left;
@@ -337,10 +338,12 @@
           style="display: none; text-align: left; opacity: 0; transform: translateY(-100%); animation: slideIn 0.5s forwards; font-size: 10px; vertical-align: top;">
           <p id="helpLoged" class="w3-text-gray"
             style="text-align: left; opacity: 0; transform: translateY(-100%); animation: slideIn 0.5s forwards; font-size: 13px; margin-top: -15px; display: none;">
-            <b>Dashboard</b> (Esquerdo) <b style="margin: 5px;"></b> <b>Deslogar</b> (Direito)</p>
+            <b>Dashboard</b> (Esquerdo) <b style="margin: 5px;"></b> <b>Deslogar</b> (Direito)
+          </p>
           <p id="helpNoLoged" class="w3-text-gray"
             style="text-align: left; opacity: 0; transform: translateY(-100%); animation: slideIn 0.5s forwards; font-size: 13px; margin-top: -15px; display: block;">
-            <b>Fazer login</b> (Esquerdo/Direito)</p>
+            <b>Fazer login</b> (Esquerdo/Direito)
+          </p>
         </div>
       </div>
       <br>
