@@ -1,90 +1,73 @@
-// Importação de módulos
-const express = require("express"); // Importa o módulo 'express' para criar o servidor web
-const mongoose = require("mongoose"); // Importa o módulo 'mongoose' para interagir com o banco de dados MongoDB
-const path = require("path"); // Importa o módulo 'path' para lidar com caminhos de arquivo
-const fs = require("fs"); // Importa o módulo 'fs' para lidar com operações de arquivo
-const app = express(); // Cria uma instância do servidor web usando o Express
-const axios = require("axios"); // Importa o módulo 'axios' para fazer solicitações HTTP
-const crypto = require("crypto"); // Importa o módulo 'crypto' para operações de criptografia
+const express = require("express");
+const mongoose = require("mongoose");
+const path = require("path");
+const fs = require("fs");
+const app = express();
+const axios = require("axios");
+const crypto = require("crypto");
 
-// Importação de módulos personalizados
-const Applications = require("./database/Applications"); // Importa o módulo 'Applications' de um arquivo personalizado
-const Users = require("./database/Users"); // Importa o módulo 'Users' de um arquivo personalizado
-const Guilds = require("./database/Guilds"); // Importa o módulo 'Guilds' de um arquivo personalizado
-const config = require("./config.json"); // Importa as configurações do arquivo 'config.json'
+const Applications = require("./database/Applications");
+const Users = require("./database/Users");
+const Guilds = require("./database/Guilds");
+const config = require("./config.json");
 
-// Configuração de middleware e do servidor
-app.use(express.static(__dirname)); // Configura o servidor para servir arquivos estáticos na pasta atual
-app.use(express.urlencoded({ extended: true })); // Configura o servidor para lidar com dados codificados de formulário
-app.use(express.json()); // Configura o servidor para lidar com dados no formato JSON
+app.use(express.static(__dirname));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 const { userInfos, sendChannelsToServer } = require("./onny.js");
 
-// Estabelecimento da conexão com o banco de dados MongoDB
 mongoose
   .connect(
     `mongodb+srv://${config.mongoose.user}:${config.mongoose.password}@cluster0.xedqrgo.mongodb.net/`,
     {
-      useNewUrlParser: true, // Opção para usar o novo analisador de URL (necessária para versões mais recentes do MongoDB)
-      useUnifiedTopology: true, // Opção para usar a nova camada de gerenciamento de conexão (necessária para versões mais recentes do MongoDB)
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     }
   )
   .then(() => {
-    console.log("[Onny] Conexão com o banco de dados realizada com sucesso!"); // Imprime uma mensagem de sucesso na conexão
+    console.log("[Onny] Conexão com o banco de dados realizada com sucesso!");
   })
   .catch((error) => {
-    console.error("Erro ao conectar ao MongoDB:", error); // Em caso de erro, imprime uma mensagem de erro no console
+    console.error("Erro ao conectar ao MongoDB:", error);
   });
 
-// Rotas e manipulação de requisições
 app.get("/auth/discord", (req, res) => {
-  // Redireciona o usuário para a página de autorização do Discord
-  //res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=https%3A%2F%2Fonny.discloud.app%2F&response_type=token&scope=identify%20guilds`);
-  // Outro redirecionamento para desenvolvimento local (comentado)
   res.redirect(`https://discord.com/api/oauth2/authorize?client_id=1013882148513661009&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&response_type=token&scope=identify%20guilds`);
 });
 
 app.get("/", async (req, res) => {
-  // Responde com o arquivo HTML da página inicial
   res.sendFile(__dirname + "/html/onny/index.html");
 });
 
 app.get("/usuario", async (req, res) => {
   const token = req.query.access_token;
-  // Define um cookie com o token de acesso
   res.cookie("access_token", token);
-  // Responde com o arquivo HTML da página do usuário
   res.sendFile(__dirname + "/html/onny/usuario.html");
 });
 
 app.get("/pathnotes", async (req, res) => {
-  // Responde com o arquivo HTML da página das pathnotes
   res.sendFile(__dirname + "/html/onny/pathnotes.html");
 });
 
 app.get("/leaderboard", async (req, res) => {
-  // Responde com o arquivo HTML da página da leaderboard
   res.sendFile(__dirname + "/html/onny/leaderboard.html");
 });
 
 app.get("/profile/:id", async (req, res) => {
-  // Responda com o arquivo HTML da página de perfil
   res.sendFile(__dirname + "/html/onny/profile.html");
 });
 
 app.get("/profile", async (req, res) => {
-  // Responda com o arquivo HTML da página de perfil
   res.sendFile(__dirname + "/html/onny/profile.html");
 });
 
 app.get("/block", async (req, res) => {
-  // Responda com o arquivo HTML da página de perfil
   res.sendFile(__dirname + "/html/onny/denied.html");
 });
 
 app.post("/app/:application", (req, res) => {
   const applicationRedirect = req.params.application;
-  // Redireciona o usuário para a rota correspondente ao aplicativo
   res.redirect(`/app/${applicationRedirect}`);
 });
 
@@ -92,14 +75,12 @@ app.get("/app/:application", async (req, res) => {
   const applicationSearch = req.params.application;
 
   try {
-    // Tenta encontrar aplicativos no banco de dados com base no ID fornecido
     const apps = await Applications.find({ id: applicationSearch });
 
     if (!apps || apps.length === 0) {
       return res.json("NOT_FOUND");
     }
 
-    // Responde com os aplicativos encontrados em formato JSON
     const jsonBuild = apps.map((app) => ({
       ...app.toJSON(),
       type: app.owner === applicationSearch ? "owner" : "admin",
@@ -114,22 +95,18 @@ app.get("/app/:application", async (req, res) => {
 
 app.get("/dashboard/:app", async (req, res) => {
   const token = req.query.access_token;
-  // Define um cookie com o token de acesso
   res.cookie("access_token", token);
-  // Responde com o arquivo HTML da página do painel de controle do aplicativo
   res.sendFile(__dirname + "/html/onny/app.html");
 });
 
 app.get("/servidor/:server", async (req, res) => {
   const token = req.query.access_token;
   res.cookie("access_token", token);
-  // Responde com o arquivo HTML da página do servidor
   res.sendFile(__dirname + "/html/onny/server.html");
 });
 
 app.post("/apps/:owner", (req, res) => {
   const ownerRedirect = req.params.owner;
-  // Redireciona o usuário para a rota correspondente ao proprietário de aplicativo
   res.redirect(`/apps/${ownerRedirect}`);
 });
 
@@ -137,14 +114,12 @@ app.get("/apps/:owner", async (req, res) => {
   const ownerSearch = req.params.owner;
 
   try {
-    // Tenta encontrar aplicativos no banco de dados
     const apps = await Applications.find({});
 
     if (!apps || apps.length === 0) {
       return res.json("NOT_FOUND");
     }
 
-    // Responde com os aplicativos encontrados em formato JSON
     const jsonBuild = apps.map((app) => ({
       ...app.toJSON(),
       type: app.owner === ownerSearch ? "owner" : "admin",
@@ -159,7 +134,6 @@ app.get("/apps/:owner", async (req, res) => {
 
 app.post("/api/users/:id", (req, res) => {
   const userRedirect = req.params.id;
-  // Redireciona o usuário para a rota correspondente ao usuário
   res.redirect(`/apps/users/${userRedirect}`);
 });
 
@@ -170,7 +144,6 @@ app.get("/api/users/:id", (req, res) => {
     .then(async (user) => {
       if (user[0]) {
         const infos = await userInfos(userId);
-        // Responde com informações do usuário em formato JSON
         const jsonBuild = user.map((u) => ({
           ...u.toJSON(),
           userInformations: infos !== "NOT_INFOS_FOUND" ? infos : "not_found",
@@ -188,17 +161,14 @@ app.get("/api/users/:id", (req, res) => {
 });
 
 app.post("/api/onny/leaderboard", (req, res) => {
-  // Redireciona o usuário para a rota de classificação do jogo Onny
   res.redirect(`/api/onny/leaderboard`);
 });
 
 app.get("/api/onny/leaderboard", async (req, res) => {
   try {
-    // Tenta buscar todos os usuários e classificá-los por onnycoins
     const users = await Users.find({}).sort({ onnycoins: -1 });
 
     if (users.length > 0) {
-      // Responde com a classificação de usuários em formato JSON
       const jsonBuild = await Promise.all(
         users.map(async (user) => {
           const infos = await userInfos(user.id);
@@ -223,17 +193,14 @@ let collectedData = null;
 app.post("/api/onny", (req, res) => {
   const data = req.body;
 
-  // Armazena os dados recebidos em collectedData
   collectedData = data;
   res.json({ message: "Dados recebidos com sucesso!" });
 });
 
 app.get("/api/onny", (req, res) => {
   if (collectedData) {
-    // Responde com os dados coletados em formato JSON
     res.json(collectedData);
   } else {
-    // Responde com um status offline caso não haja dados coletados
     const data = {
       status: "offline",
     };
@@ -246,7 +213,6 @@ app.post("/api/onny/guild/:id", (req, res) => {
   const serverID = req.params.id;
   const data = req.body;
 
-  // Armazene os dados recebidos no objeto usando o ID do servidor como chave
   collectedGuildData[serverID] = data;
   res.json({ message: "SEND" });
 });
@@ -254,14 +220,11 @@ app.post("/api/onny/guild/:id", (req, res) => {
 app.get("/api/onny/guild/:id", async (req, res) => {
   const serverID = req.params.id;
 
-  // Chame a função para enviar os canais assim que a rota for acessada
   await sendChannelsToServer(serverID);
 
   if (collectedGuildData[serverID]) {
-    // Responda com os dados coletados para o servidor específico em formato JSON
     res.json(collectedGuildData[serverID]);
   } else {
-    // Responda com uma mensagem informando que não há dados coletados para este servidor
     const data = {
       message: "NOT_FOUND",
     };
@@ -271,7 +234,6 @@ app.get("/api/onny/guild/:id", async (req, res) => {
 
 app.post("/api/usuario/:id", (req, res) => {
   const userRedirect = req.params.id;
-  // Redireciona o usuário para a rota correspondente ao usuário
   res.redirect(`/api/usuario/${userRedirect}`);
 });
 
@@ -282,7 +244,6 @@ app.get("/api/usuario/:id", async (req, res) => {
     .then(async (user) => {
       if (user[0]) {
         let user = await userInfos(userId);
-        // Responde com informações do usuário em formato JSON
         res.json(user);
       } else {
         res.json({ status: "none" });
@@ -296,7 +257,6 @@ app.get("/api/usuario/:id", async (req, res) => {
 
 app.post("/api/guild/database/:id", (req, res) => {
   const guildRedirect = req.params.id;
-  // Redireciona o usuário para a rota correspondente ao banco de dados do servidor
   res.redirect(`/guild/database/${guildRedirect}`);
 });
 
@@ -306,10 +266,8 @@ app.get("/api/guild/database/:id", async (req, res) => {
   await Guilds.find({ id: guildId })
     .then(async (guild) => {
       if (guild[0]) {
-        // Responde com informações do banco de dados do servidor em formato JSON
         res.json(guild);
       } else {
-        // Cria uma entrada no banco de dados do servidor se não existir
         await Guilds.create({ id: guildId });
         await Guilds.find({ id: guildId }).then(async (guild) => {
           if (guild[0]) {
@@ -330,15 +288,12 @@ app.post("/api/onny/database/update/:type", async (req, res) => {
 
   if (type === "guilds") {
     try {
-      // Consulta o valor atual no banco de dados
       const guild = await Guilds.findOne({ id: id });
 
-      // Verifica se o valor atual é diferente do novo valor
       if (guild && guild[caminho] !== value) {
         const updateObj = {};
         updateObj[caminho] = value;
 
-        // Atualiza o banco de dados do servidor com os dados fornecidos
         const result = await Guilds.findOneAndUpdate({ id: id }, updateObj);
 
         if (result) {
@@ -347,12 +302,10 @@ app.post("/api/onny/database/update/:type", async (req, res) => {
           res.json({ success: false });
         }
       } else {
-        // Valor igual, não é necessário atualizar
         res.json({ message: `Valor ${caminho} não foi alterado.` });
       }
     } catch (error) {
       console.error(error);
-      // Responde com um status 500 e uma mensagem de erro em caso de falha na atualização
       res.status(500).json({
         success: false,
         error: "Erro ao atualizar o " + caminho + " do guild.",
@@ -367,10 +320,8 @@ app.post("/api/onny/database/insert/:type", async (req, res) => {
 
   if (type === "guilds") {
     try {
-      // Define o objeto de atualização com o operador $push para inserir no array
       const updateObj = { $push: { [logsCaminho]: logValue } };
 
-      // Atualiza o banco de dados do servidor com os dados fornecidos
       const result = await Guilds.findOneAndUpdate({ id: id }, updateObj);
 
       if (result) {
@@ -380,7 +331,6 @@ app.post("/api/onny/database/insert/:type", async (req, res) => {
       }
     } catch (error) {
       console.error(error);
-      // Responde com um status 500 e uma mensagem de erro em caso de falha na atualização
       res
         .status(500)
         .json({ error: "Erro ao inserir no " + logsCaminho + " do guild." });
@@ -391,15 +341,12 @@ app.post("/api/onny/database/insert/:type", async (req, res) => {
 app.get("/api/onny/database/get/guilds/:id", async (req, res) => {
   const { id } = req.params;
 
-  // Consulte o banco de dados para obter os dados do servidor com base no ID
   try {
     const guildData = await Guilds.findOne({ id: id });
 
     if (guildData) {
-      // Se os dados do servidor forem encontrados, retorne-os como uma resposta JSON
       res.json(guildData);
     } else {
-      // Se o servidor não for encontrado, retorne uma resposta vazia ou um status de erro
       res.status(404).json({ error: "Servidor não encontrado" });
     }
   } catch (error) {
@@ -410,26 +357,21 @@ app.get("/api/onny/database/get/guilds/:id", async (req, res) => {
 
 const cron = require("node-cron");
 let previousLeaderboard = null;
-let leaderboardChanges = []; // Array para armazenar as mudanças
+let leaderboardChanges = [];
 
-// Função para fazer backup dos dados
 const performBackup = async () => {
   try {
-    // Realize uma solicitação para a sua API de leaderboard para obter os dados
     const response = await axios.get(
       "http://localhost:8080/api/onny/leaderboard"
     );
 
-    // Salve os dados de backup em um arquivo JSON
     const currentLeaderboard = response.data;
     fs.writeFileSync(
       "leaderboardBackup.json",
       JSON.stringify(currentLeaderboard, null, 2)
     );
 
-    // Compare os dados atuais com os dados anteriores (se não for o primeiro backup)
     if (previousLeaderboard) {
-      // Implemente a lógica de comparação aqui, detectando mudanças de classificação
       const changes = [];
 
       for (let i = 0; i < currentLeaderboard.length; i++) {
@@ -438,16 +380,13 @@ const performBackup = async () => {
         if (currentUserData) {
           const userId = currentUserData.id;
 
-          // Encontre o usuário na base de dados anterior
           const previousUserData = previousLeaderboard.find(
             (user) => user.id === userId
           );
 
-          // Determine a posição atual
           const currentPosition = i;
 
           if (previousUserData) {
-            // Compare as posições para determinar o número na lista anterior
             const previousPosition = previousLeaderboard.findIndex(
               (user) => user.id === userId
             );
@@ -457,16 +396,14 @@ const performBackup = async () => {
             changeInfo.atualPosition = currentPosition;
             changes.push(changeInfo);
           } else {
-            // O usuário não estava na base anterior
             const changeInfo = { ...currentUserData };
-            changeInfo.anteriorPosition = currentPosition; // Define a posição anterior como a atual
+            changeInfo.anteriorPosition = currentPosition;
             changeInfo.atualPosition = currentPosition;
             changes.push(changeInfo);
           }
         }
       }
 
-      // Se houver mudanças, adicione-as ao array leaderboardChanges
       if (changes.length > 0) {
         leaderboardChanges.push(changes);
         console.log("[Leaderboard] Alteração detectada!");
@@ -483,7 +420,6 @@ const performBackup = async () => {
   }
 };
 
-// Agende o backup para ser executado a cada hora (à 0 minutos de cada hora)
 cron.schedule("0 * * * *", performBackup);
 
 setTimeout(() => {
@@ -494,7 +430,6 @@ setTimeout(() => {
   });
 }, 30000);
 
-// Rota para exibir as mudanças no leaderboard
 app.get("/api/onny/leaderboard/generated", (req, res) => {
   if (leaderboardChanges.length > 0) {
     res.json(leaderboardChanges[leaderboardChanges.length - 1]);
@@ -504,47 +439,34 @@ app.get("/api/onny/leaderboard/generated", (req, res) => {
 });
 
 app.get("/expired", async (req, res) => {
-  // Responde com o arquivo HTML da página de expiração
   res.sendFile(__dirname + "/html/onny/expired.html");
 });
 
 app.get("/insupported", async (req, res) => {
-  // Responde com o arquivo HTML da página de não suportado
   res.sendFile(__dirname + "/html/onny/insupported.html");
 });
 
-// Configuração da rota para lidar com a página de erro 404
 app.get("/404", (req, res) => {
   res.sendFile(__dirname + "/html/404.html");
 });
 
-// Middleware para lidar com todas as outras rotas não definidas
 app.use((req, res) => {
-  // Define o status da resposta como 404 (não encontrado) e envia a página de erro 404
   res.status(404).sendFile(__dirname + "/html/404.html");
 });
 
-// Inicia o servidor na porta 8080
 app.listen(8080, () => {
   console.log(`[Onny] Servidor iniciado e dashboard disponível.`);
 });
 
-// Importa as classes ShardingManager e Client do módulo "discord.js"
 const { ShardingManager, Client } = require("discord.js");
 
-// Cria uma instância de ShardingManager, passando o arquivo "onny.js" como script de shard e o token de autenticação do Discord
 const manager = new ShardingManager("onny.js", { token: config.token });
-
-// Define um ouvinte de eventos para quando uma shard for criada
 manager.on("shardCreate", async (shard) => {
-  // Exibe uma mensagem no console indicando que uma aplicação está sendo iniciada em uma shard específica
   console.log(`[Shard] Aplicação está sendo iniciada no shard #${shard.id}.`);
 
-  // Define um ouvinte de eventos para lidar com erros na shard
   shard.on("error", (error) => {
     console.error(error);
   });
 });
 
-// Inicia o processo de spawn de shards
 manager.spawn();
