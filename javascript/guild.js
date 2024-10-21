@@ -154,22 +154,21 @@ if (isLoggedIn()) {
         let currentMessages = [];
 
         if (changesMessages.length === 0) {
-          // Se não houver registros, exiba uma mensagem
           const noRecordsMessage = document.createElement("div");
           noRecordsMessage.classList = "w3-text-white";
           noRecordsMessage.style.fontSize = "14px";
           noRecordsMessage.textContent =
             "Nenhuma alteração foi realizada até o momento!";
           logsChangesMessages.appendChild(noRecordsMessage);
-          return; // Não é necessário continuar se não houver registros
+          return;
         }
 
         changesMessages.forEach((message) => {
           const matches = /^\[(.*?)\](.*)$/.exec(message);
           if (matches) {
             const dateAndTime = matches[1].split(",");
-            const date = dateAndTime[0].trim(); // Extrai a data no formato "25 de out"
-            const time = dateAndTime[1].trim(); // Extrai o horário (11:55)
+            const date = dateAndTime[0].trim();
+            const time = dateAndTime[1].trim();
             const messageText = matches[2].trim();
 
             if (currentDateString === null) {
@@ -224,15 +223,13 @@ if (isLoggedIn()) {
        *    WELCOME MESSAGE CONFIGURATIONS:
        */
 
-      /** Definindo configurações atuais no Dashboard: */
-
       var selectElement = document.getElementById("newMember.message.type");
       var valueToSelect = data[0].newMember.message.type;
 
       for (var i = 0; i < selectElement.options.length; i++) {
         if (selectElement.options[i].value === valueToSelect) {
           selectElement.selectedIndex = i;
-          break; // Encerra o loop quando a opção é encontrada
+          break;
         }
       }
 
@@ -271,14 +268,12 @@ if (isLoggedIn()) {
             const canais = data.channels;
             const select = document.getElementById("newMember.channel");
 
-            // Limpe as opções existentes, exceto a opção "Escolha da Onny"
             select
               .querySelectorAll('option:not([value="false"])')
               .forEach((option) => {
                 option.remove();
               });
 
-            // Adicione as opções dos canais com o valor sendo o ID do canal e tipo igual a 0
             canais.forEach((canal) => {
               if (canal.type === 0) {
                 const optionText = `#${canal.name}`;
