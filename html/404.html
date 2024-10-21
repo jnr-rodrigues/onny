@@ -5,29 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="description" content="Dashboard" />
     <meta name="author" content="dawtonico" />
-    <!-- Metadados -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Meta tag para responsividade -->
 
     <link
       rel="icon"
       type="image/png"
       href="https://cdn.discordapp.com/attachments/1039517691242877008/1126258378742710333/download.png"
     />
-    <!-- Favicon -->
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <!-- Estilo CSS da biblioteca W3.css -->
 
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Poppins"
     />
-    <!-- Fonte Poppins do Google Fonts -->
 
     <link rel="stylesheet" href="/css/404.css" />
-    <!-- Arquivo CSS local (depende do conteúdo deste arquivo) -->
 
     <link
       rel="stylesheet"
@@ -35,27 +29,23 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
-    <!-- Biblioteca de ícones FontAwesome -->
 
     <script>
       window.addEventListener("contextmenu", function (e) {
         e.preventDefault();
       });
-      // Impede o menu de contexto ao clicar com o botão direito do mouse
 
       window.addEventListener("keydown", function (e) {
         if ((e.ctrlKey || e.metaKey) && e.shiftKey && e.key === "I") {
           e.preventDefault();
         }
       });
-      // Impede a abertura das ferramentas de desenvolvedor com Ctrl+Shift+I
 
       window.addEventListener("keydown", function (e) {
         if ((e.ctrlKey || e.metaKey) && e.key === "u") {
           e.preventDefault();
         }
       });
-      // Impede a visualização do código-fonte com Ctrl+U
 
       window.addEventListener("keydown", function (e) {
         if (e.key === "F12") {
@@ -68,11 +58,9 @@
           window.location.href = "/insupported";
         }
       }
-      // Redireciona para outra página se a largura da janela for menor ou igual a 1450px
 
       verificarResolucao();
       window.addEventListener("resize", verificarResolucao);
-      // Executa a função verificarResolucao() e adiciona um ouvinte de evento de redimensionamento da janela
     </script>
   </head>
 
@@ -86,7 +74,6 @@
       >
         Oush! O que aconteceu aqui?
       </h2>
-      <!-- Título da página -->
 
       <div id="descriptionOnny">
         <h4
@@ -97,11 +84,9 @@
           Essa página que você tentou acessar não foi encontrada ou é
           inexistente!
         </h4>
-        <!-- Descrição da página de erro 404 -->
       </div>
 
       <hr style="width: 100px; border: 5px solid #2b2d31" class="w3-round" />
-      <!-- Linha horizontal estilizada -->
 
       <br />
       <a
@@ -116,7 +101,6 @@
       >
         Retornar para Página Inicial
       </a>
-      <!-- Botão para retornar à página inicial -->
     </div>
     <script>
       function detectConsole() {
