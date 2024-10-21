@@ -16,7 +16,6 @@ function fetchData() {
 
         try {
           jsonData.forEach(async (userData) => {
-            // Crie o elemento de div principal
             const noteDiv = document.createElement("div");
             noteDiv.id = `user`;
             noteDiv.className = "notes";
@@ -28,7 +27,6 @@ function fetchData() {
             noteDiv.style.position = "relative";
             noteDiv.style.overflow = "hidden";
 
-            // Crie a primeira parte da diagonal
             const diagonalDiv1 = document.createElement("div");
             diagonalDiv1.style.position = "absolute";
             diagonalDiv1.style.top = "0";
@@ -39,7 +37,6 @@ function fetchData() {
               "linear-gradient(to right, #1e1f22, transparent)";
             diagonalDiv1.style.zIndex = "1";
 
-            // Crie a segunda parte da diagonal
             const diagonalDiv2 = document.createElement("div");
             diagonalDiv2.style.position = "absolute";
             diagonalDiv2.style.top = "0";
@@ -50,7 +47,6 @@ function fetchData() {
               "linear-gradient(to right, #1e1f22, transparent)";
             diagonalDiv2.style.zIndex = "1";
 
-            // Crie a parte da imagem
             const imageDiv = document.createElement("div");
             imageDiv.style.position = "absolute";
             imageDiv.style.top = "0";
@@ -66,7 +62,6 @@ function fetchData() {
               imageDiv.style.backgroundSize = "cover";
             };
 
-            // Crie a imagem do usuário
             const userImage = document.createElement("img");
             userImage.src = userData.userInformations.displayAvatarURL;
             userImage.style.display = "inline-block";
@@ -74,7 +69,6 @@ function fetchData() {
             userImage.style.verticalAlign = "middle";
             userImage.style.borderRadius = "5px";
 
-            // Crie o conteúdo de texto
             const textContentDiv = document.createElement("div");
             textContentDiv.style.display = "inline-block";
             textContentDiv.style.verticalAlign = "middle";
@@ -105,15 +99,15 @@ function fetchData() {
             if (userData.atualPosition > userData.anteriorPosition) {
               userPositionImage.src = `/icons/leaderboard/up-arrow.png`;
               userPositionImage.style.width = "25px";
-              userDescription.textContent = `Uhuu! Subiu para a ${userData.atualPosition + 1}° posição.`; // More positive tone
+              userDescription.textContent = `Uhuu! Subiu para a ${userData.atualPosition + 1}° posição.`;
             } else if (userData.atualPosition < userData.anteriorPosition) {
               userPositionImage.src = `/icons/leaderboard/down-arrow.png`;
               userPositionImage.style.width = "25px";
-              userDescription.textContent = `Não desanime! Estava anteriormente na ${userData.anteriorPosition + 1}° posição.`; // Encouraging tone
+              userDescription.textContent = `Não desanime! Estava anteriormente na ${userData.anteriorPosition + 1}° posição.`;
             } else {
               userPositionImage.src = `/icons/leaderboard/approximation.png`;
               userPositionImage.style.width = "20px";
-              userDescription.textContent = `Manteve sua posição no ranking!`; // Neutral tone
+              userDescription.textContent = `Manteve sua posição no ranking!`;
             }
             usernameHeading.appendChild(userPositionImage);
 
@@ -182,7 +176,6 @@ function fetchData() {
             infoDiv1.appendChild(coinsText1);
             infoDiv1.appendChild(cashText1);
 
-            // Crie a segunda parte das informações
             const infoDiv2 = document.createElement("div");
             infoDiv2.className = "w3-text-gray";
             infoDiv2.style.textAlign = "left";
@@ -195,12 +188,10 @@ function fetchData() {
             infoDiv2.style.display = "inline-block";
             infoDiv2.style.verticalAlign = "top";
 
-            // Crie uma div para conter o <br> e adicione o <br> nessa div
             const lineBreakDiv = document.createElement("div");
             lineBreakDiv.style.display = "block";
             const lineBreak = document.createElement("br");
 
-            // Adicione os elementos criados à div principal
             noteDiv.appendChild(diagonalDiv1);
             noteDiv.appendChild(diagonalDiv2);
             noteDiv.appendChild(imageDiv);
@@ -221,11 +212,9 @@ function fetchData() {
           console.log(e);
         }
 
-        // Adicione a classe 'focused' ao primeiro elemento com a classe 'notes'
         const notes = document.querySelectorAll(".notes");
         if (notes.length > 0) {
           notes[0].classList.add("focused");
-          // Registre um evento de rolagem após a inserção das notas
           window.addEventListener("scroll", checkCenterNote);
         }
       }
@@ -242,7 +231,7 @@ document.addEventListener("DOMContentLoaded", function () {
 function checkCenterNote() {
   const notes = document.querySelectorAll(".notes");
   if (notes.length === 0) {
-    return; // Não há elementos com a classe 'notes'
+    return;
   }
 
   const viewportHeight = window.innerHeight;
@@ -254,7 +243,6 @@ function checkCenterNote() {
     const noteTop = rect.top + scrollTop;
     const noteBottom = rect.bottom + scrollTop;
 
-    // Verifica se a nota está no centro da tela
     if (noteTop <= centerY && noteBottom >= centerY) {
       note.classList.add("focused");
     } else {
