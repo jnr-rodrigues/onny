@@ -48,7 +48,7 @@ if (isLoggedIn()) {
         .then((response) => response.json())
         .then(async (data) => {
           if (Array.isArray(data) && data.length > 0) {
-            const user = data[0]; // Use the first item in the array
+            const user = data[0];
 
             if (user.profile.banners.equipped == "ONNY") {
               document.getElementById("progressBarFill").style.background =
